@@ -19,9 +19,10 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     {
        move = GetComponent<Rigidbody2D>();
     }
-    
+
     void Update()
     {
+        jumpForce = 10;
         vec2.x = Input.GetAxis("Horizontal");
         move.velocity = new Vector2(vec2.x * speedCharacter, move.velocity.y);
         if (OnGround)
@@ -30,8 +31,8 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             {
                 move.velocity = new Vector2(move.velocity.x, jumpForce);
             }
+            
         }
-
         ChekingGround();
     
     }

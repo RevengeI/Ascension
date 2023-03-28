@@ -40,5 +40,6 @@ public class InputWindow : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)    
     {
         HelpSprite.SetActive(false);
+        isCharacter = false;
     }
 }

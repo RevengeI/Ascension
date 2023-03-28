@@ -6,4 +6,5 @@ public static class SceneParameters
     public static bool CharacterDoor = false;
     public static bool CharacterDoorKey = false;
     public static bool CheckBomb = true;
+    public static int weaponIndex = 0;
 }

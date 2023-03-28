@@ -28,6 +28,7 @@ public class CharacterMoves : MonoBehaviour
         if (SceneParameters.BalconyExit == 2)
         {
             CharacterPosition.position = new Vector2(-29.8f, 3.43f);
+            Debug.Log(CharacterPosition.position);
         }
         if (SceneParameters.BalconyExit == 1)
         {
@@ -53,7 +54,7 @@ public class CharacterMoves : MonoBehaviour
 
 
 
-        if (Physics2D.OverlapBox(CharacterPosition.position, new Vector2(width, height), 0, WhatsIsKey) == true)
+        if (Physics2D.OverlapBox(CharacterPosition.position, new Vector2(width, height), 0, WhatsIsKey))
         {
             SceneParameters.CharacterDoorKey = KeyDetected = true;
         }
