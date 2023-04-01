@@ -3,7 +3,11 @@ guid: e7fe7b218b33b1340928e0d7589f812e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - Grapple: {fileID: 2796700195846868251, guid: 2a107f1efdf63324b99963c5ffaf9a16, type: 3}
+  - Weapon: {instanceID: 0}
+  - grapplehook: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

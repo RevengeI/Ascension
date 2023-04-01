@@ -3089,6 +3089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: 0101
+  Grapple: {fileID: 7190265854430392290, guid: 1260aa379832cd8499144826b079bef7, type: 3}
   index: 0
   Weapon: {fileID: 1714187646}
 --- !u!114 &1422156665

@@ -8,6 +8,7 @@ using TMPro;
 public class WeaponBehaviour : MonoBehaviour
 {
     public bool[] weapons;
+    public GameObject Grapple;
     [SerializeField] private int index = 0;
     public Image Weapon;
     Sprite GRAPPLE, SHOTGUN;
@@ -31,6 +32,13 @@ public class WeaponBehaviour : MonoBehaviour
             Weapon.sprite = SHOTGUN;
         }
     }
+    void Weapon_Shoot()
+    {
+        if (index == 0)
+        {
+            Instantiate(Grapple, transform.position, Quaternion.identity);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -48,6 +56,10 @@ public class WeaponBehaviour : MonoBehaviour
             } while (weapons[index] == false);
             Weapon_Cycling();
             
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Weapon_Shoot();
         }
     }
 }

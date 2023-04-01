@@ -1,55 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
+using System.Collections.Generic;
+
+using UnityEngine;
 public class Grapple : MonoBehaviour
 {
-    private GameObject player;
-    public LayerMask ground;
-
-
-    public float width;
-    public float height;
-
-    public Vector2 movePosition;
-
-    private float playerX;
-    private float nextX;
-    private float dist;
-    private float baseY;
-    private float nextY;
-    private float accel;
-    private bool flag = false;
-
-    // Start is called before the first frame update
+    public GameObject player;
+    public float speed = 10;
+    public float height = 0.18f;
+    public float width = 1f;
+    public LayerMask Ground;
+    public bool NoDestroy = false;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        accel = 0f;
+        transform.position = player.transform.position;
+        
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        transform.Translate((speed * Time.deltaTime), (speed * Time.deltaTime), 0);
+        if (Physics2D.OverlapBox(transform.position, new Vector2(width, height), 0, Ground))
         {
-            flag = true;
+            player.transform.position = transform.position;
+            Destroy(gameObject);
         }
-        while(flag)
-        {
-            playerX = player.transform.position.x;
-            baseY = player.transform.position.y;
-            accel++;
-            nextX = playerX + accel;
-            nextY = baseY + accel;
-            movePosition = new Vector2(playerX + nextX, baseY + nextY);
-            transform.position = movePosition;
-
-            if (Physics2D.OverlapBox(movePosition, new Vector2(width, height), 0, ground) == true)
-            {
-                Destroy(gameObject);
-                flag = false;
-            }
-        }
+        Destroy(gameObject, 0.5f);
     }
 }

@@ -6,13 +6,12 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 {
     public Rigidbody2D move;
     public float speedCharacter = 2f;
-    public float jumpForce;
+    public float jumpForce = 10;
     public bool OnGround;
     public Transform GroundCheck;
     public float height = 0.18f;
     public float width = 1f;
     public LayerMask Ground;
-
     private Vector2 vec2;
 
     void Start()
@@ -22,7 +21,6 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
     void Update()
     {
-        jumpForce = 10;
         vec2.x = Input.GetAxis("Horizontal");
         move.velocity = new Vector2(vec2.x * speedCharacter, move.velocity.y);
         if (OnGround)
