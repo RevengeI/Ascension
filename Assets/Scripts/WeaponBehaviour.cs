@@ -38,6 +38,7 @@ public class WeaponBehaviour : MonoBehaviour
         {
             Instantiate(Grapple, transform.position, Quaternion.identity);
         }
+        
     }
 
     // Update is called once per frame

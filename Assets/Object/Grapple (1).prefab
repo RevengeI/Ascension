@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4973967061098586876}
   - component: {fileID: 4973967061098586875}
   - component: {fileID: 4973967061098586877}
+  - component: {fileID: 914186313461790852}
   m_Layer: 0
   m_Name: Grapple (1)
   m_TagString: Untagged
@@ -126,4 +127,23 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 256
-  NoDestroy: 0
+  Orientation: 0
+--- !u!232 &914186313461790852
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190265854430392290}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 1
+  m_MaxDistanceOnly: 0
