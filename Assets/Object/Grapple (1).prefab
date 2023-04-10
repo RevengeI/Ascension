@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!212 &4973967061098586875
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -121,8 +121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speed: 20
-  height: 0.18
+  height: 1
   width: 1
+  timeToLive: 0
   Ground:
     serializedVersion: 2
     m_Bits: 256
