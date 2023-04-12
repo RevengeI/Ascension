@@ -7,7 +7,7 @@ public class HealthBar : MonoBehaviour
 {
 
     public Image Bar;
-    public float Health;
+    public int Health;
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        Bar.fillAmount = Health;
+        Bar.fillAmount = Health * 0.125f;
         SceneParameters.Health = Health;
     }
 }

@@ -1,7 +1,8 @@
 
 public static class SceneParameters
 {
-    public static float Health = 1f;
+    public static int Health = 8;
+    public static int MaxHealth = 8;
     public static int BalconyExit = 0;
     public static bool CharacterDoor = false;
     public static bool CharacterDoorKey = false;

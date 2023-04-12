@@ -14,12 +14,11 @@ public class Bomb : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-        Debug.Log("Sus");
         
         if (other.tag == "Player")
         {
             BombSprite.SetActive(false);
-            HealthCharacter.Health -= 0.4f;
+            HealthCharacter.Health -= 3;
         }
     }
 }

@@ -7,6 +7,10 @@ TagManager:
   - Key
   - Bomb
   - Character'sWindow
+  - Shotgun
+  - Grapple
+  - EnemyMarker
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,11 +20,11 @@ TagManager:
   - UI
   - Key
   - Bomb
-  - GroundSideScroller
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Markers
+  - Projectiles
+  - Enemies
+  - Grapple
   - 
   - 
   - 

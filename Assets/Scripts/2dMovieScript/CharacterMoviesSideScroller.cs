@@ -15,6 +15,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     private Vector2 vec2;
     public bool Grappled = false;
     public bool Sticky = false;
+    public HealthBar healthBar;
     public bool[] Orientations = { false, false, false, false}; // [0] - up, [1] - up+direction, [2] - down, [3] - down+direction
     void Start()
     {

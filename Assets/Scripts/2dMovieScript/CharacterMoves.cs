@@ -15,11 +15,12 @@ public class CharacterMoves : MonoBehaviour
     public GameObject KeySprite;
     public GameObject BombSprite;
     public bool BombCheck = true;
+    public bool[] Orientations = { false, false, false, false }; // right - down - left - up
 
     public HealthBar HealthCharacter;
     
     private Vector2 vec2;
-    private float diagonalFixed = 0.7f;
+    private float diagonalFixed = 0.7075f;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class CharacterMoves : MonoBehaviour
     {
         vec2.x = Input.GetAxis("Horizontal");
         vec2.y = Input.GetAxis("Vertical");
+        
         if ((vec2.x != 0) && (vec2.y != 0))
         {
             move.velocity = new Vector2(vec2.x * speedCharacter * diagonalFixed, vec2.y * speedCharacter * diagonalFixed);
@@ -51,7 +53,46 @@ public class CharacterMoves : MonoBehaviour
         {
             move.velocity = new Vector2(vec2.x * speedCharacter, vec2.y * speedCharacter);
         }
-
+        if (vec2.x > 0)
+        {
+            Orientations[0] = true;
+            Orientations[2] = false;
+            if(vec2.y == 0)
+            {
+                Orientations[1] = false;
+                Orientations[3] = false;
+            }
+        }
+        if (vec2.x < 0)
+        {
+            Orientations[2] = true;
+            Orientations[0] = false;
+            if (vec2.y == 0)
+            {
+                Orientations[1] = false;
+                Orientations[3] = false;
+            }
+        }
+        if (vec2.y > 0)
+        {
+            Orientations[3] = true;
+            Orientations[1] = false;
+            if (vec2.x == 0)
+            {
+                Orientations[0] = false;
+                Orientations[2] = false;
+            }
+        }
+        if(vec2.y < 0)
+        {
+            Orientations[1] = true;
+            Orientations[3] = false;
+            if (vec2.x == 0)
+            {
+                Orientations[0] = false;
+                Orientations[2] = false;
+            }
+        }
 
 
         if (Physics2D.OverlapBox(CharacterPosition.position, new Vector2(width, height), 0, WhatsIsKey))
@@ -67,7 +108,7 @@ public class CharacterMoves : MonoBehaviour
         if (Physics2D.OverlapBox(CharacterPosition.position, new Vector2(width, height), 0, WhatsIsBomb) == true)
         {
             SceneParameters.CheckBomb = BombCheck = false;
-            HealthCharacter.Health -= 0.4f;
+            HealthCharacter.Health -= 3;
         }
         if (BombCheck == false)
         {

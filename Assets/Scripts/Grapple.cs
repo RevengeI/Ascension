@@ -3,68 +3,80 @@ using System;
 using System.Collections.Generic;
 
 using UnityEngine;
-public class Grapple : MonoBehaviour
+public class Grapple : WeaponClass
 {
-    public float speed = 10f;
-    public float height = 0.18f;
-    public float width = 0.18f;
-    public float timeToLive = 0;
-    public LayerMask Ground;
     public DistanceJoint2D joint;
-    private Rigidbody2D rigid;
-    private Rigidbody2D player;
-    private Vector2 playerOrient;
-    private Vector2 Orientation;
-    private bool Grounded;
     public bool Grappled;
-    private bool[] Orientations;
-    
-
-
-    void Start()
+    public bool Pulled = false;
+    public GameObject enemy;
+    public override void AdditionalCall()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        playerOrient = player.transform.localScale;
-        Grounded = player.GetComponent<CharacterMoviesSideScroller>().OnGround;
         Grappled = player.GetComponent<CharacterMoviesSideScroller>().Grappled;
-        Orientations = player.GetComponent<CharacterMoviesSideScroller>().Orientations;
-        transform.position = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
-        rigid = gameObject.GetComponent<Rigidbody2D>(); //getting all needed components
-        DeclareOrientation();
+        timeToLive = 1.2f;
     }
 
+    public override IEnumerator StopLiving()
+    {
+        yield return new WaitForSeconds(timeToLive);
+        if(!Grappled && !Pulled)
+        {
+            Destroy(gameObject);
+        }
+
+    }
 
     void Update()
     {
-        if (!Grappled)
+        if (!Grappled && !Pulled)
         {
+            StartCoroutine(StopLiving());
             rigid.velocity = Orientation * speed;
         }
-        if (Physics2D.OverlapBox(transform.position, new Vector2(width, height), 0, Ground))
-        {
-            if (!Grappled) // using the variable as a flag to execute the code just once
-            {
-                Attacher();
-            }
-        }
+        
         if(Grappled)
         {
             PendulumMotion();
         }
         if (Input.GetKeyUp(KeyCode.X))
         {
-            //if(Grappled)
-            //{ 
-            //    player.AddForce(joint.reactionForce, ForceMode2D.Impulse); 
-            //}
             Grappled = false;
             player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
             Destroy(gameObject);
         }
+        if(Pulled)
+        {
+            PullPunch(enemy);
+        }
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Grapple"))
+        {
+            if (!Grappled) // using the variable as a flag to execute the code just once
+            {
+                transform.position = other.transform.position;
+                Attacher();
+            }
+        }
+        if (!Grappled)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                Destroy(gameObject);
+            }
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+            {
+                enemy = other.gameObject;
+                Pulled = true;
+                
+            }
+        }
+        
+    }
     void Attacher()
     {
+
         Grappled = true;
         player.GetComponent<CharacterMoviesSideScroller>().Grappled = true;
         rigid.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
@@ -74,37 +86,6 @@ public class Grapple : MonoBehaviour
         joint.autoConfigureDistance = false;
         joint.connectedAnchor = new Vector2(0, 0);
         joint.distance = 1f;
-    }
-
-    void DeclareOrientation()
-    {
-            if (Orientations[0] && (player.velocity.x == 0 || !Grounded))
-            {
-                Orientation = new Vector2(0, 1);
-            }
-            else if (Orientations[2] && !Grounded)
-            {
-                Orientation = new Vector2(0, -1);
-            }
-            else
-            {
-                if (playerOrient.x > 0)
-                {
-                    Orientation = new Vector2(1, 0);
-                }
-                else
-                {
-                    Orientation = new Vector2(-1, 0);
-                }
-                if (Orientations[1] || (Orientations[0] && player.velocity.x != 0))
-                {
-                    Orientation += new Vector2(0, 1);
-                }
-                else if (Orientations[3] || (Orientations[2] && player.velocity.x != 0))
-                {
-                    Orientation += new Vector2(0, -1);
-                }
-            }
     }
     
     void PendulumMotion()
@@ -160,6 +141,22 @@ public class Grapple : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.1f);
             }
+        }
+    }
+
+    void PullPunch(GameObject other)
+    {
+        Pulled = true;
+        other.GetComponent<DefaultEnemy>().stopCollisions = true;
+        transform.position = other.transform.position;
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, Time.deltaTime);
+        other.transform.position = Vector2.MoveTowards(transform.position, player.transform.position, Time.deltaTime);
+        if(Vector2.Distance(player.transform.position, other.transform.position) < 2)
+        {
+            other.GetComponent<DefaultEnemy>().launcher = true;
+            other.GetComponent<DefaultEnemy>().health -= 20;
+            other.GetComponent<Rigidbody2D>().AddForce(new Vector2(15 * player.transform.localScale.x, 15), ForceMode2D.Impulse);
+            Destroy(gameObject);
         }
     }
 }

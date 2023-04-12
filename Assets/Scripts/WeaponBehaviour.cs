@@ -8,7 +8,10 @@ using TMPro;
 public class WeaponBehaviour : MonoBehaviour
 {
     public bool[] weapons;
-    public GameObject Grapple;
+    public GameObject GrappleSS;
+    public GameObject ShotgunSS;
+    public GameObject GrappleTD;
+    public GameObject ShotgunTD;
     [SerializeField] private int index = 0;
     public Image Weapon;
     Sprite GRAPPLE, SHOTGUN;
@@ -34,9 +37,33 @@ public class WeaponBehaviour : MonoBehaviour
     }
     void Weapon_Shoot()
     {
-        if (index == 0)
+        if (GameObject.FindWithTag("RoomType").GetComponent<RoomTypeChecker>().RoomType == true)
         {
-            Instantiate(Grapple, transform.position, Quaternion.identity);
+            if (index == 0)
+            {
+                Instantiate(GrappleSS, transform.position, Quaternion.identity);
+            }
+            if (index == 1)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    Instantiate(ShotgunSS, transform.position, Quaternion.identity);
+                }
+            }
+        }
+        else
+        {
+            if (index == 0)
+            {
+                Instantiate(GrappleTD, transform.position, Quaternion.identity);
+            }
+            if (index == 1)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    Instantiate(ShotgunTD, transform.position, Quaternion.identity);
+                }
+            }
         }
         
     }
