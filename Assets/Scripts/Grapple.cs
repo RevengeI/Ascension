@@ -13,7 +13,7 @@ public class Grapple : WeaponClass
     public override void AdditionalCall()
     {
         Grappled = player.GetComponent<CharacterMoviesSideScroller>().Grappled;
-        timeToLive = 1.2f;
+        timeToLive = 0.3f;
     }
 
     public override IEnumerator StopLiving()
@@ -93,7 +93,11 @@ public class Grapple : WeaponClass
     
     void PendulumMotion()
     {
-        float angle = (Mathf.Atan2(rigid.transform.position.y - player.transform.position.y, rigid.transform.position.x - player.transform.position.x) - 1.5f )/ Mathf.PI;
+        float angle = Math.Abs((Mathf.Atan2(rigid.transform.position.y - player.transform.position.y, rigid.transform.position.x - player.transform.position.x) - 1.5f )/ Mathf.PI);
+        if (angle > 1f)
+        {
+            angle = 1/angle;
+        }
         StartCoroutine(AddingForce(angle));
         if (player.velocity.x > 35)
         {
@@ -115,17 +119,18 @@ public class Grapple : WeaponClass
 
     IEnumerator AddingForce(float angle)
     {
+
         if (Input.GetKeyDown(KeyCode.D))
         {
             for (int i = 0; i < 7; i++)
             {
-                if (angle > 0.5f)
+                if (angle > 0.45f && player.transform.position.x - transform.position.x < 0)
                 {
-                    player.AddForce(new Vector2(-1 * Math.Abs(angle) * 500, 0), ForceMode2D.Force);
+                    player.AddForce(new Vector2(-1 * angle * 500, -1 *angle * 200), ForceMode2D.Force);
                 }
                 else
                 {
-                    player.AddForce(new Vector2(Math.Abs(angle) * 500, 0), ForceMode2D.Force); //40
+                    player.AddForce(new Vector2(angle * 500, 0), ForceMode2D.Force); //40
                 }
                 yield return new WaitForSeconds(0.1f);
             }
@@ -134,13 +139,13 @@ public class Grapple : WeaponClass
         {
             for (int i = 0; i < 7; i++)
             {
-                if (angle < -0.5f)
+                if (angle > 0.5f && player.transform.position.x - transform.position.x > 0)
                 {
-                    player.AddForce(new Vector2(Math.Abs(angle) * 500, 0), ForceMode2D.Force);
+                    player.AddForce(new Vector2(angle * 500, -1 * angle * 200), ForceMode2D.Force);
                 }
                 else
                 {
-                    player.AddForce(new Vector2(-1 * Math.Abs(angle) * 500, 0), ForceMode2D.Force);
+                    player.AddForce(new Vector2(-1 * angle * 500, 0), ForceMode2D.Force);
                 }
                 yield return new WaitForSeconds(0.1f);
             }
