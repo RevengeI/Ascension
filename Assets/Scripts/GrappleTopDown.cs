@@ -7,6 +7,7 @@ public class GrappleTopDown : WeaponClassTopDown
 {
     public bool Pulled = false;
     public GameObject enemy;
+    public LineRenderer line;
     public override void AdditionalCall()
     {
         timeToLive = 1.2f;
@@ -24,6 +25,8 @@ public class GrappleTopDown : WeaponClassTopDown
 
     void Update()
     {
+        line.SetPosition(0, new Vector3(player.transform.position.x, player.transform.position.y, 0));
+        line.SetPosition(1, new Vector3(transform.position.x, transform.position.y, 0));
         if (!Pulled)
         {
             StartCoroutine(StopLiving());

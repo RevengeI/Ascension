@@ -9,6 +9,7 @@ public class Grapple : WeaponClass
     public bool Grappled;
     public bool Pulled = false;
     public GameObject enemy;
+    public LineRenderer line;
     public override void AdditionalCall()
     {
         Grappled = player.GetComponent<CharacterMoviesSideScroller>().Grappled;
@@ -27,6 +28,8 @@ public class Grapple : WeaponClass
 
     void Update()
     {
+        line.SetPosition(0, new Vector3 (player.transform.position.x, player.transform.position.y + 1f, 0));
+        line.SetPosition(1, new Vector3(transform.position.x, transform.position.y, 0));
         if (!Grappled && !Pulled)
         {
             StartCoroutine(StopLiving());
