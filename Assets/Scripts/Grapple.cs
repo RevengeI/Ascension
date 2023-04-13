@@ -93,11 +93,22 @@ public class Grapple : WeaponClass
     
     void PendulumMotion()
     {
-        float angle = Math.Abs((Mathf.Atan2(rigid.transform.position.y - player.transform.position.y, rigid.transform.position.x - player.transform.position.x) - 1.5f )/ Mathf.PI);
-        if (angle > 1f)
+        float posY;
+        float posX;
+        int sign;
+        if (player.transform.position.x - transform.position.x <= 0)
         {
-            angle = Mathf.Cos(angle)+0.46f;
+            posY = rigid.transform.position.y - player.transform.position.y;
+            posX = rigid.transform.position.x - player.transform.position.x;
+            sign = 1;
         }
+        else
+        {
+            posY = player.transform.position.y - rigid.transform.position.y;
+            posX = player.transform.position.x - rigid.transform.position.x;
+            sign = -1;
+        }
+        float angle = Math.Abs((sign * Mathf.Atan2(posY, posX) - 1.5f )/ Mathf.PI);
         StartCoroutine(AddingForce(angle));
         if (player.velocity.x > 35)
         {
@@ -124,7 +135,7 @@ public class Grapple : WeaponClass
         {
             for (int i = 0; i < 7; i++)
             {
-                if (angle > 0.45f && player.transform.position.x - transform.position.x < 0)
+                if (angle > 0.5f && player.transform.position.x - transform.position.x < 0)
                 {
                     player.AddForce(new Vector2(-1 * angle * 500, -1 *angle * 200), ForceMode2D.Force);
                 }
