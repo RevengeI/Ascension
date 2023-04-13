@@ -96,7 +96,7 @@ public class Grapple : WeaponClass
         float angle = Math.Abs((Mathf.Atan2(rigid.transform.position.y - player.transform.position.y, rigid.transform.position.x - player.transform.position.x) - 1.5f )/ Mathf.PI);
         if (angle > 1f)
         {
-            angle = 1/angle;
+            angle = Mathf.Cos(angle)+0.5f;
         }
         StartCoroutine(AddingForce(angle));
         if (player.velocity.x > 35)
