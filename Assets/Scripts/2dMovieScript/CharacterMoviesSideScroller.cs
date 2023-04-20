@@ -5,14 +5,15 @@ using UnityEngine;
 public class CharacterMoviesSideScroller : MonoBehaviour
 {
     public Rigidbody2D move;
-    public float speedCharacter = 10f;
-    public float jumpForce = 10;
+    public float speedCharacter;
+    public float jumpForce;
     public bool OnGround;
+    public float maxSpeed;
     public Transform GroundCheck;
-    public float height = 0.18f;
-    public float width = 1f;
+    public float height;
+    public float width;
     public LayerMask Ground;
-    private Vector2 vec2;
+    public Vector2 vec2;
     public bool Grappled = false;
     public bool Sticky = false;
     public HealthBar healthBar;
@@ -27,40 +28,101 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         vec2.x = Input.GetAxis("Horizontal");
         if (!Sticky)
         {
-            move.velocity = new Vector2(vec2.x * speedCharacter, move.velocity.y);
-            if (move.velocity.x < 0)
+            move.AddForce(vec2 * speedCharacter, ForceMode2D.Force);
+            if (move.velocity.x > 10)
+            {
+                move.velocity = new Vector2(10, move.velocity.y);
+            }
+            if (move.velocity.x < -10)
+            {
+                move.velocity = new Vector2(-10, move.velocity.y);
+            }
+            if (vec2.x < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
-            if (move.velocity.x > 0)
+            if (vec2.x > 0)
             {
                 transform.localScale = new Vector3(1, 1, 1);
             }
             if (OnGround)
             {
+                move.drag = 20;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    move.isKinematic = false;
                     move.velocity = new Vector2(move.velocity.x, jumpForce);
                 }
-
+                
             }
+            if(!OnGround)
+            {
+                move.drag = 0;
+            }    
+            
         }
         if (Grappled)
         {
             Sticky = true;
+            move.drag = 0;
         }
-        if(!Grappled && Sticky)
+        if (!Grappled && Sticky)
         {
-            StartCoroutine(WaitForSticky());
-
+            if (OnGround || (move.velocity.x < 10 && move.velocity.x > -10)) 
+            {
+                Sticky = false;
+            }
         }
-        CheckingGround();
+        OnGround = Physics2D.OverlapBox(GroundCheck.position, new Vector2(width, height), 0, Ground);
         OrientationCheck();
     }
 
-    void CheckingGround()
+    void OnCollisionStay2D(Collision2D other)
     {
-        OnGround = Physics2D.OverlapBox(GroundCheck.position, new Vector2(width, height), 0, Ground);
+        
+        if (other.gameObject.tag == "Slope")
+        {
+
+            
+            if (vec2.x == 0)
+            {
+                move.velocity = new Vector2(0, 0);
+                move.isKinematic = true;
+            }
+            if (vec2.x != 0)
+            {
+                if(move.velocity.y < 0)
+                {
+                    move.gravityScale = 24;
+                }
+                else
+                {
+                    move.gravityScale = 4;
+                }
+                move.isKinematic = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                move.gravityScale = 4;
+                move.isKinematic = false;
+                move.drag = 0;
+                
+                
+            }
+            
+        }
+
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        
+        if (other.gameObject.tag == "Slope")
+        {
+            move.drag = 20;
+            move.isKinematic = false;
+            move.gravityScale = 4;
+        }
     }
     
     void OrientationCheck()
@@ -99,10 +161,4 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForSticky()
-    {
-        yield return new WaitForSeconds(move.velocity.x * 0.05f);
-        Sticky = false;
-
-    }
 }

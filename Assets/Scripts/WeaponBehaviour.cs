@@ -13,7 +13,7 @@ public class WeaponBehaviour : MonoBehaviour
     public GameObject GrappleTD;
     public GameObject ShotgunTD;
     [SerializeField] private int index = 0;
-    public Image Weapon;
+    public SpriteRenderer Weapon;
     Sprite GRAPPLE, SHOTGUN;
     // Start is called before the first frame update
     void Start()

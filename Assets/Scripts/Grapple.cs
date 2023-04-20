@@ -10,6 +10,7 @@ public class Grapple : WeaponClass
     public bool Pulled = false;
     public GameObject enemy;
     public LineRenderer line;
+    private bool walljump = false;
     public override void AdditionalCall()
     {
         Grappled = player.GetComponent<CharacterMoviesSideScroller>().Grappled;
@@ -40,8 +41,16 @@ public class Grapple : WeaponClass
         {
             PendulumMotion();
         }
+
         if (Input.GetKeyUp(KeyCode.X))
         {
+            if(walljump)
+            {
+                player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                player.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+                Grappled = false;
+                player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
+            }
             Grappled = false;
             player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
             Destroy(gameObject);
@@ -50,6 +59,7 @@ public class Grapple : WeaponClass
         {
             PullPunch(enemy);
         }
+        
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -66,6 +76,8 @@ public class Grapple : WeaponClass
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
+                player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
+                Grappled = false;
                 Destroy(gameObject);
             }
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
@@ -87,7 +99,7 @@ public class Grapple : WeaponClass
         joint.connectedBody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         joint.anchor = new Vector2(0, 0);
         joint.autoConfigureDistance = false;
-        joint.connectedAnchor = new Vector2(0, 0);
+        joint.connectedAnchor = new Vector2(0, 1);
         joint.distance = 1f;
     }
     
@@ -125,6 +137,10 @@ public class Grapple : WeaponClass
         if (Input.GetKeyDown(KeyCode.W))
         {
             joint.distance = 1f;
+        }
+        if (joint.distance == 1f)
+        {
+            WallJumpCheck();
         }
     }
 
@@ -178,4 +194,39 @@ public class Grapple : WeaponClass
             Destroy(gameObject);
         }
     }
+
+    void WallJumpCheck()
+    {
+        RaycastHit2D downRay = Physics2D.Raycast(transform.position, new Vector2(0,-1));
+        Debug.Log(downRay.transform.position);
+        Debug.Log("Created");
+        if (downRay.collider.gameObject.layer == LayerMask.NameToLayer("Grapple") || downRay.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Debug.Log("Ground found");
+            if (Math.Abs(player.transform.position.x - transform.position.x) > 0.99f && Math.Abs(player.transform.position.x - transform.position.x) < 1.01f)
+            {
+                Debug.Log("x confirmed");
+                if (Math.Abs(player.transform.position.y - transform.position.y) < 0.1f)
+                {
+                    Debug.Log("y confirmed");
+                    player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+                    walljump = true;
+                }
+            }    
+        }
+        if(walljump)
+        {
+            Debug.Log("u can walljump");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                player.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+                Grappled = false;
+                player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
+                player.AddForce(new Vector2((player.transform.position.x - transform.position.x) * 200, 15), ForceMode2D.Impulse);
+                Destroy(gameObject);
+            }
+        }
+    }
+
 }

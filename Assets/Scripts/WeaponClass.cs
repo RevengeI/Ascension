@@ -14,6 +14,7 @@ public class WeaponClass : MonoBehaviour
     protected Vector2 Orientation;
     protected bool Grounded;
     protected bool[] Orientations;
+    private float vec2x;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class WeaponClass : MonoBehaviour
         playerOrient = player.transform.localScale;
         Grounded = player.GetComponent<CharacterMoviesSideScroller>().OnGround;
         Orientations = player.GetComponent<CharacterMoviesSideScroller>().Orientations;
+        vec2x = player.GetComponent<CharacterMoviesSideScroller>().vec2.x;
         transform.position = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
         rigid = gameObject.GetComponent<Rigidbody2D>(); //getting all needed components
         DeclareOrientation();
@@ -30,7 +32,7 @@ public class WeaponClass : MonoBehaviour
 
     void DeclareOrientation()
     {
-        if (Orientations[0] && (player.velocity.x == 0 || !Grounded))
+        if (Orientations[0] && (vec2x == 0 || !Grounded))
         {
             Orientation = new Vector2(0, 1);
         }

@@ -11,6 +11,8 @@ TagManager:
   - Grapple
   - EnemyMarker
   - Enemy
+  - RoomType
+  - Slope
   layers:
   - Default
   - TransparentFX
