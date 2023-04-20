@@ -195,25 +195,28 @@ public class Grapple : WeaponClass
         }
     }
 
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Walljump")
+        {
+            WallJumpCheck();
+        }    
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
+            Grappled = false;
+            Destroy(gameObject);
+        }
+    }
     void WallJumpCheck()
     {
-        RaycastHit2D downRay = Physics2D.Raycast(transform.position, new Vector2(0,-1));
-        Debug.Log(downRay.transform.position);
-        Debug.Log("Created");
-        if (downRay.collider.gameObject.layer == LayerMask.NameToLayer("Grapple") || downRay.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            Debug.Log("Ground found");
-            if (Math.Abs(player.transform.position.x - transform.position.x) > 0.99f && Math.Abs(player.transform.position.x - transform.position.x) < 1.01f)
+        
+            Debug.Log("Found grapple");
+            if (Math.Abs(player.transform.position.x - transform.position.x) > 0.49f && Math.Abs(player.transform.position.x - transform.position.x) < 1.01f)
             {
-                Debug.Log("x confirmed");
-                if (Math.Abs(player.transform.position.y - transform.position.y) < 0.1f)
-                {
-                    Debug.Log("y confirmed");
-                    player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+                    player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                     walljump = true;
-                }
             }    
-        }
         if(walljump)
         {
             Debug.Log("u can walljump");
@@ -221,9 +224,10 @@ public class Grapple : WeaponClass
             {
                 player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
                 player.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+                player.constraints &= RigidbodyConstraints2D.FreezeRotation;
                 Grappled = false;
+                player.velocity = new Vector2((player.transform.position.x - transform.position.x) * 130, 15);
                 player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
-                player.AddForce(new Vector2((player.transform.position.x - transform.position.x) * 200, 15), ForceMode2D.Impulse);
                 Destroy(gameObject);
             }
         }

@@ -25,6 +25,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
     void Update()
     {
+        
         vec2.x = Input.GetAxis("Horizontal");
         if (!Sticky)
         {
@@ -161,4 +162,11 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (!GameObject.FindWithTag("Grapple"))
+        {
+            Grappled = false;
+        }
+    }
 }
