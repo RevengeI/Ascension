@@ -138,10 +138,6 @@ public class Grapple : WeaponClass
         {
             joint.distance = 1f;
         }
-        if (joint.distance == 1f)
-        {
-            WallJumpCheck();
-        }
     }
 
     IEnumerator AddingForce(float angle)
@@ -201,36 +197,33 @@ public class Grapple : WeaponClass
         {
             WallJumpCheck();
         }    
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
-            Grappled = false;
-            Destroy(gameObject);
-        }
     }
     void WallJumpCheck()
-    {
-        
-            Debug.Log("Found grapple");
-            if (Math.Abs(player.transform.position.x - transform.position.x) > 0.49f && Math.Abs(player.transform.position.x - transform.position.x) < 1.01f)
-            {
-                    player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-                    walljump = true;
-            }    
-        if(walljump)
-        {
-            Debug.Log("u can walljump");
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-                player.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
-                player.constraints &= RigidbodyConstraints2D.FreezeRotation;
-                Grappled = false;
-                player.velocity = new Vector2((player.transform.position.x - transform.position.x) * 130, 15);
-                player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
-                Destroy(gameObject);
-            }
-        }
-    }
+      {
+              if (Math.Abs(player.transform.position.x - transform.position.x) > 0.49f && Math.Abs(player.transform.position.x - transform.position.x) < 1.11f && Math.Abs(player.transform.position.y - transform.position.y) > 0.49f &&
+                Math.Abs(player.transform.position.y - transform.position.y) < 1.15f && joint.distance == 1f)
+              {
 
+                      player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                      walljump = true;
+              }    
+          if(walljump)
+          {
+              if (Input.GetKeyDown(KeyCode.Space))
+              {
+                  player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                  player.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+                  player.constraints &= RigidbodyConstraints2D.FreezeRotation;
+                  Grappled = false;
+                  player.velocity = new Vector2((player.transform.position.x - transform.position.x) * 15, 15);
+                  player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
+                  Destroy(gameObject);
+              }
+              if(Input.GetKeyDown(KeyCode.S))
+              {
+                  joint.distance = 6f;
+                  walljump = false;
+              }
+          }
+      }
 }

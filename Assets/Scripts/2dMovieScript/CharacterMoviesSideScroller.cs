@@ -29,7 +29,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         vec2.x = Input.GetAxis("Horizontal");
         if (!Sticky)
         {
-            move.AddForce(vec2 * speedCharacter, ForceMode2D.Force);
+            move.velocity = new Vector2(vec2.x * speedCharacter, move.velocity.y);
             if (move.velocity.x > 10)
             {
                 move.velocity = new Vector2(10, move.velocity.y);
@@ -48,7 +48,6 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             }
             if (OnGround)
             {
-                move.drag = 20;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     move.isKinematic = false;
@@ -56,16 +55,10 @@ public class CharacterMoviesSideScroller : MonoBehaviour
                 }
                 
             }
-            if(!OnGround)
-            {
-                move.drag = 0;
-            }    
-            
         }
         if (Grappled)
         {
             Sticky = true;
-            move.drag = 0;
         }
         if (!Grappled && Sticky)
         {
@@ -106,7 +99,6 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             {
                 move.gravityScale = 4;
                 move.isKinematic = false;
-                move.drag = 0;
                 
                 
             }
@@ -120,7 +112,6 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         
         if (other.gameObject.tag == "Slope")
         {
-            move.drag = 20;
             move.isKinematic = false;
             move.gravityScale = 4;
         }
