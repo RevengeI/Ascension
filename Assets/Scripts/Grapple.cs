@@ -11,6 +11,7 @@ public class Grapple : WeaponClass
     public GameObject enemy;
     public LineRenderer line;
     private bool walljump = false;
+    private bool walljumpcheck = false;
     public override void AdditionalCall()
     {
         Grappled = player.GetComponent<CharacterMoviesSideScroller>().Grappled;
@@ -59,7 +60,10 @@ public class Grapple : WeaponClass
         {
             PullPunch(enemy);
         }
-        
+        if(walljumpcheck)
+        {
+            WallJumpCheck();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -195,20 +199,32 @@ public class Grapple : WeaponClass
     {
         if (collision.gameObject.tag == "Walljump")
         {
-            WallJumpCheck();
+            walljumpcheck = true;
         }    
     }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Walljump")
+        {
+            walljumpcheck = false;
+        }
+    }
+
     void WallJumpCheck()
-      {
-              if (Math.Abs(player.transform.position.x - transform.position.x) > 0.49f && Math.Abs(player.transform.position.x - transform.position.x) < 1.11f && Math.Abs(player.transform.position.y - transform.position.y) > 0.49f &&
-                Math.Abs(player.transform.position.y - transform.position.y) < 1.15f && joint.distance == 1f)
+    {
+        Debug.Log(player.transform.position.y - transform.position.y);
+        if (Math.Abs(player.transform.position.x - transform.position.x) > 0.49f && 
+            Math.Abs(player.transform.position.x - transform.position.x) < 1.11f && 
+            Math.Abs(player.transform.position.y - transform.position.y) > 0.30f &&
+                Math.Abs(player.transform.position.y - transform.position.y) < 1.55f && joint.distance == 1f)
               {
 
                       player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                       walljump = true;
               }    
-          if(walljump)
-          {
+        if(walljump)
+        {
               if (Input.GetKeyDown(KeyCode.Space))
               {
                   player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
@@ -224,6 +240,6 @@ public class Grapple : WeaponClass
                   joint.distance = 6f;
                   walljump = false;
               }
-          }
-      }
+        }
+    }
 }

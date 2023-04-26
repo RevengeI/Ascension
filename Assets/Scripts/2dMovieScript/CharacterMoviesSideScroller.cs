@@ -17,6 +17,8 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public bool Grappled = false;
     public bool Sticky = false;
     public HealthBar healthBar;
+    public float runningSpeed = 1f;
+    public bool run;
     public bool[] Orientations = { false, false, false, false}; // [0] - up, [1] - up+direction, [2] - down, [3] - down+direction
     void Start()
     {
@@ -29,15 +31,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         vec2.x = Input.GetAxis("Horizontal");
         if (!Sticky)
         {
-            move.velocity = new Vector2(vec2.x * speedCharacter, move.velocity.y);
-            if (move.velocity.x > 10)
-            {
-                move.velocity = new Vector2(10, move.velocity.y);
-            }
-            if (move.velocity.x < -10)
-            {
-                move.velocity = new Vector2(-10, move.velocity.y);
-            }
+            move.velocity = new Vector2(vec2.x * speedCharacter * runningSpeed, move.velocity.y);
             if (vec2.x < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
@@ -55,6 +49,23 @@ public class CharacterMoviesSideScroller : MonoBehaviour
                 }
                 
             }
+            
+        }
+        if (run)
+        {
+            runningSpeed = Mathf.MoveTowards(runningSpeed, 2f, 1f * Time.deltaTime);
+        }
+        if (!run)
+        {
+            runningSpeed = Mathf.MoveTowards(runningSpeed, 1f, 3f * Time.deltaTime);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            run = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            run = false;
         }
         if (Grappled)
         {
@@ -62,7 +73,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
         if (!Grappled && Sticky)
         {
-            if (OnGround || (move.velocity.x < 10 && move.velocity.x > -10)) 
+            if (OnGround || (move.velocity.x < 10 * runningSpeed && move.velocity.x > -10 * runningSpeed)) 
             {
                 Sticky = false;
             }
