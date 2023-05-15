@@ -72,7 +72,7 @@ public class WeaponBehaviour : MonoBehaviour
     void Update()
     {
         SceneParameters.weaponIndex = index;
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("Select"))
         {
             do
             {
@@ -85,7 +85,7 @@ public class WeaponBehaviour : MonoBehaviour
             Weapon_Cycling();
             
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetButtonDown("Shoot"))
         {
             Weapon_Shoot();
         }

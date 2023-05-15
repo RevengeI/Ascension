@@ -12,6 +12,7 @@ public class Grapple : WeaponClass
     public LineRenderer line;
     private bool walljump = false;
     private bool walljumpcheck = false;
+    private bool BlockMovement = false;
     public override void AdditionalCall()
     {
         Grappled = player.GetComponent<CharacterMoviesSideScroller>().Grappled;
@@ -43,7 +44,7 @@ public class Grapple : WeaponClass
             PendulumMotion();
         }
 
-        if (Input.GetKeyUp(KeyCode.X))
+        if (Input.GetButtonUp("Shoot"))
         {
             if(walljump)
             {
@@ -134,11 +135,11 @@ public class Grapple : WeaponClass
         {
             player.velocity = new Vector2(player.velocity.x, 35);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetAxisRaw("Vertical") == -1)
         {
             joint.distance = 6f;
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetAxisRaw("Vertical") == 1)
         {
             joint.distance = 1f;
         }
@@ -146,9 +147,9 @@ public class Grapple : WeaponClass
 
     IEnumerator AddingForce(float angle)
     {
-
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetAxisRaw("Horizontal") > 0 && BlockMovement == false)
         {
+            BlockMovement = true;
             for (int i = 0; i < 7; i++)
             {
                 if (angle > 0.5f && player.transform.position.x - transform.position.x < 0)
@@ -162,8 +163,9 @@ public class Grapple : WeaponClass
                 yield return new WaitForSeconds(0.1f);
             }
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetAxisRaw("Horizontal") < 0 && BlockMovement == false)
         {
+            BlockMovement = true;
             for (int i = 0; i < 7; i++)
             {
                 if (angle > 0.5f && player.transform.position.x - transform.position.x > 0)
@@ -176,6 +178,10 @@ public class Grapple : WeaponClass
                 }
                 yield return new WaitForSeconds(0.1f);
             }
+        }
+        if (Input.GetAxisRaw("Horizontal") == 0)
+        {
+            BlockMovement = false;
         }
     }
 
@@ -225,7 +231,7 @@ public class Grapple : WeaponClass
               }    
         if(walljump)
         {
-              if (Input.GetKeyDown(KeyCode.Space))
+              if (Input.GetButtonDown("Jump"))
               {
                   player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
                   player.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
@@ -235,7 +241,7 @@ public class Grapple : WeaponClass
                   player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
                   Destroy(gameObject);
               }
-              if(Input.GetKeyDown(KeyCode.S))
+              if(Input.GetAxisRaw("Vertical") == -1)
               {
                   joint.distance = 6f;
                   walljump = false;

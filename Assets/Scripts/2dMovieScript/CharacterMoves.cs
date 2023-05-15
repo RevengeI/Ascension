@@ -62,7 +62,7 @@ public class CharacterMoves : MonoBehaviour
                 Orientations[3] = false;
             }
         }
-        if (vec2.x < 0)
+        else if (vec2.x < 0)
         {
             Orientations[2] = true;
             Orientations[0] = false;
@@ -82,7 +82,7 @@ public class CharacterMoves : MonoBehaviour
                 Orientations[2] = false;
             }
         }
-        if(vec2.y < 0)
+        else if(vec2.y < 0)
         {
             Orientations[1] = true;
             Orientations[3] = false;

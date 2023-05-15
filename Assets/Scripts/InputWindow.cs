@@ -21,7 +21,7 @@ public class InputWindow : MonoBehaviour
     {
         if (isCharacter == true)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetButtonDown("Door"))
             {
                 SceneParameters.BalconyExit = DoorNumber;
                 SceneManager.LoadScene(SceneMovie);

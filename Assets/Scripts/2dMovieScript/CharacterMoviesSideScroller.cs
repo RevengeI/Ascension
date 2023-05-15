@@ -42,7 +42,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             }
             if (OnGround)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetButtonDown("Jump"))
                 {
                     move.isKinematic = false;
                     move.velocity = new Vector2(move.velocity.x, jumpForce);
@@ -106,7 +106,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
                 }
                 move.isKinematic = false;
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Jump"))
             {
                 move.gravityScale = 4;
                 move.isKinematic = false;
@@ -130,37 +130,34 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     
     void OrientationCheck()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetAxisRaw("Vertical") == 1)
         {
             Orientations[0] = true;
         }
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            Orientations[0] = false;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Orientations[1] = true;
-        }
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            Orientations[1] = false;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetAxisRaw("Vertical") == -1)
         {
             Orientations[2] = true;
         }
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetButtonDown("AngleUp"))
         {
-            Orientations[2] = false;
+            Orientations[1] = true;
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonUp("AngleUp"))
+        {
+            Orientations[1] = false;
+        }
+        if (Input.GetButtonDown("AngleDown"))
         {
             Orientations[3] = true;
         }
-        if (Input.GetKeyUp(KeyCode.C))
+        if (Input.GetButtonUp("AngleDown"))
         {
             Orientations[3] = false;
+        }
+        if (Input.GetAxisRaw("Vertical") == 0)
+        {
+            Orientations[0] = false;
+            Orientations[2] = false;
         }
     }
 
