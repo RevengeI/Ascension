@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
@@ -41,11 +43,19 @@ public class PauseMenu : MonoBehaviour
         {
             switch (selector)
             {
-                case 0:
+                case 0: //Resume
                     Time.timeScale = 1f;
                     GameObject.Find("PauseCaller").GetComponent<CallPauseMenu>().paused = false;
                     break;
-                case 1:
+                case 1: //Save
+                    Saver save = new Saver();
+                    BinaryFormatter binForm = new BinaryFormatter();
+                    using (FileStream stream = new FileStream(@"C:\Users\WillowPunch\Desktop\save.dat", FileMode.Create))
+                    {
+                        binForm.Serialize(stream, save);
+                    }
+                    break;
+                case 2: //Main
                     Time.timeScale = 1f;
                     SceneManager.LoadScene(2);
                     break;
