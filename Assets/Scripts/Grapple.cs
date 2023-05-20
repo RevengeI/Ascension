@@ -219,7 +219,6 @@ public class Grapple : WeaponClass
 
     void WallJumpCheck()
     {
-        Debug.Log(player.transform.position.y - transform.position.y);
         if (Math.Abs(player.transform.position.x - transform.position.x) > 0.49f && 
             Math.Abs(player.transform.position.x - transform.position.x) < 1.11f && 
             Math.Abs(player.transform.position.y - transform.position.y) > 0.30f &&

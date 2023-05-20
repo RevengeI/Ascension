@@ -40,7 +40,7 @@ public class Door : MonoBehaviour
             {
                 HelpSprite[0].SetActive(true);
 
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetButtonDown("Door"))
                 {
                     isOpened();
                 }
