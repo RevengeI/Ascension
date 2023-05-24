@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-
-    public Image Bar;
     public int Health;
+    public int MaxHealth;
 
     void Start()
     {
         Health = SceneParameters.Health;
+        MaxHealth = SceneParameters.MaxHealth;
     }
 
     void Update()
     {
-        Bar.fillAmount = Health * 0.125f;
         SceneParameters.Health = Health;
+        SceneParameters.MaxHealth = MaxHealth;
     }
 }

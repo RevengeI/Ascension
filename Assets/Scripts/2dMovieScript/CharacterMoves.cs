@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterMoves : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class CharacterMoves : MonoBehaviour
     public GameObject BombSprite;
     public bool BombCheck = true;
     public bool[] Orientations = { false, false, false, false }; // right - down - left - up
+    public Image[] hearts;
+    public Sprite heart;
 
     public HealthBar HealthCharacter;
     
@@ -107,12 +110,23 @@ public class CharacterMoves : MonoBehaviour
         if (Physics2D.OverlapBox(CharacterPosition.position, new Vector2(width, height), 0, WhatsIsBomb) == true)
         {
             SceneParameters.CheckBomb = BombCheck = false;
-            HealthCharacter.Health -= 3;
+            HealthCharacter.Health--;
         }
         if (BombCheck == false)
         {
             BombSprite.SetActive(false);
         }
 
+        if (HealthCharacter.Health > HealthCharacter.MaxHealth)
+        {
+            HealthCharacter.Health = HealthCharacter.MaxHealth;
+        }
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < Mathf.RoundToInt(HealthCharacter.Health))
+                hearts[i].sprite = heart;
+            else
+                hearts[i].sprite = null;
+        }
     }
 }

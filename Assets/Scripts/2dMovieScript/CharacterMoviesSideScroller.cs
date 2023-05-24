@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterMoviesSideScroller : MonoBehaviour
 {
@@ -19,7 +21,9 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public HealthBar healthBar;
     public float runningSpeed = 1f;
     public bool run;
-    public bool[] Orientations = { false, false, false, false}; // [0] - up, [1] - up+direction, [2] - down, [3] - down+direction
+    public bool[] Orientations = { false, false, false, false }; // [0] - up, [1] - up+direction, [2] - down, [3] - down+direction
+    public Image[] hearts;
+    public Sprite heart;
     void Start()
     {
        move = gameObject.GetComponent<Rigidbody2D>();
@@ -80,6 +84,18 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
         OnGround = Physics2D.OverlapBox(GroundCheck.position, new Vector2(width, height), 0, Ground);
         OrientationCheck();
+
+        if (healthBar.Health > healthBar.MaxHealth)
+        {
+            healthBar.Health = healthBar.MaxHealth;
+        }
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < Mathf.RoundToInt(healthBar.Health))
+                hearts[i].sprite = heart;
+            else
+                hearts[i].sprite = null;
+        }
     }
 
     void OnCollisionStay2D(Collision2D other)
