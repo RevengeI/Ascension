@@ -22,7 +22,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public float runningSpeed = 1f;
     public bool run;
     public bool[] Orientations = { false, false, false, false }; // [0] - up, [1] - up+direction, [2] - down, [3] - down+direction
-    public Image[] hearts;
+    public SpriteRenderer[] hearts;
     public Sprite heart;
     void Start()
     {
@@ -91,7 +91,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < Mathf.RoundToInt(healthBar.Health))
+            if (i < healthBar.Health)
                 hearts[i].sprite = heart;
             else
                 hearts[i].sprite = null;

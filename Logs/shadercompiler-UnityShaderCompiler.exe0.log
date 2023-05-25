@@ -1,4 +1,16 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2022.1.2f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2022.1.2f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 
+Cmd: disassembleShader
+ name=UI/Default platform=d3d11 type=15 mask=6 insize=1338 outsize=2586 ok=1
+
+Cmd: disassembleShader
+ name=UI/Default platform=d3d11 type=17 mask=6 insize=646 outsize=1434 ok=1
+
+Cmd: disassembleShader
+ name=Sprites/Default platform=d3d11 type=15 mask=6 insize=890 outsize=1772 ok=1
+
+Cmd: disassembleShader
+ name=Sprites/Default platform=d3d11 type=17 mask=6 insize=454 outsize=1082 ok=1
+
 Cmd: shutdown

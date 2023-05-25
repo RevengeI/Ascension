@@ -17,7 +17,7 @@ public class CharacterMoves : MonoBehaviour
     public GameObject BombSprite;
     public bool BombCheck = true;
     public bool[] Orientations = { false, false, false, false }; // right - down - left - up
-    public Image[] hearts;
+    public SpriteRenderer[] hearts;
     public Sprite heart;
 
     public HealthBar HealthCharacter;
@@ -123,7 +123,7 @@ public class CharacterMoves : MonoBehaviour
         }
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < Mathf.RoundToInt(HealthCharacter.Health))
+            if (i < HealthCharacter.Health)
                 hearts[i].sprite = heart;
             else
                 hearts[i].sprite = null;

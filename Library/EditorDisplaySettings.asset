@@ -52,10 +52,10 @@ MonoBehaviour:
     displayName: Main Display
     displayId: 1
     enabled: 1
-    mode: 0
+    mode: 1
     viewWindowTitle: Game
     playModeViewSettings:
-      rid: 965388108238159916
+      rid: 4326178613282471999
   references:
     version: 2
     RefIds:
@@ -79,7 +79,7 @@ MonoBehaviour:
         m_showStats: 0
         m_showGizmos: 0
         m_selectedSizeIndex: 0
-    - rid: 965388108238159916
+    - rid: 4326178613282471999
       type: {class: GameViewFullscreenSettings, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data:
         m_displayNumber: 0
