@@ -385,6 +385,7 @@
 "Assets/Scripts/Door.cs"
 "Assets/Scripts/Enemies/DefaultEnemy.cs"
 "Assets/Scripts/Enemies/DefaultEnemyTopDown.cs"
+"Assets/Scripts/ExitDoor.cs"
 "Assets/Scripts/Grapple.cs"
 "Assets/Scripts/GrappleTopDown.cs"
 "Assets/Scripts/HealthBar.cs"
