@@ -11,6 +11,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public float jumpForce;
     public bool OnGround;
     public float maxSpeed;
+    public Transform CharacterPosition;
     public Transform GroundCheck;
     public float height;
     public float width;
@@ -26,7 +27,11 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public Sprite heart;
     void Start()
     {
-       move = gameObject.GetComponent<Rigidbody2D>();
+        move = gameObject.GetComponent<Rigidbody2D>();
+        if (SceneParameters.BalconyExit == 1)
+        {
+            CharacterPosition.position = new Vector2(91.5f, 2f);
+        }
     }
 
     void Update()

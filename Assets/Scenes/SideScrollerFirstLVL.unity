@@ -3103,6 +3103,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 818288508}
     - target: {fileID: 607760300193992071, guid: dfd64588d84e4b64a8390c73c7e82400, type: 3}
+      propertyPath: CharacterPosition
+      value: 
+      objectReference: {fileID: 1035135248}
+    - target: {fileID: 607760300193992071, guid: dfd64588d84e4b64a8390c73c7e82400, type: 3}
       propertyPath: hearts.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -3133,6 +3137,14 @@ PrefabInstance:
     - target: {fileID: 607760300507035472, guid: dfd64588d84e4b64a8390c73c7e82400, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607760300507035475, guid: dfd64588d84e4b64a8390c73c7e82400, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607760300507035475, guid: dfd64588d84e4b64a8390c73c7e82400, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
