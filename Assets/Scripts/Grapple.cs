@@ -232,12 +232,15 @@ public class Grapple : WeaponClass
         {
               if (Input.GetButtonDown("Jump"))
               {
+              
                   player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
                   player.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
                   player.constraints &= RigidbodyConstraints2D.FreezeRotation;
                   Grappled = false;
-                  player.velocity = new Vector2((player.transform.position.x - transform.position.x) * 15, 15);
-                  player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
+                player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
+                player.velocity = new Vector2((player.transform.position.x - transform.position.x) * 15, 0);
+                player.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+                  
                   Destroy(gameObject);
               }
               if(Input.GetAxisRaw("Vertical") == -1)
