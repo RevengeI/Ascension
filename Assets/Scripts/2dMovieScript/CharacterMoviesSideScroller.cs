@@ -19,6 +19,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public Vector2 vec2;
     public bool Grappled = false;
     public bool Sticky = false;
+    public bool Cutscened = false;
     public HealthBar healthBar;
     public float runningSpeed = 1f;
     public bool run;
@@ -36,7 +37,10 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
     void Update()
     {
-        
+        if(Cutscened)
+        {
+            return;
+        }
         vec2.x = Input.GetAxis("Horizontal");
         if (!Sticky)
         {

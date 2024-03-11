@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - RoomType
   - Slope
+  - Walljump
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Projectiles
   - Enemies
   - Grapple
-  - 
+  - Confines
   - 
   - 
   - 

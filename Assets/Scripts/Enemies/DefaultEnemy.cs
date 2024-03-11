@@ -7,9 +7,9 @@ public class DefaultEnemy : MonoBehaviour
     public int orientation;
     public int speed;
     public int health;
-    private Rigidbody2D enemyPhysics;
+    protected Rigidbody2D enemyPhysics;
     public bool launcher = false;
-    private bool do_once = false;
+    protected bool do_once = false;
     public bool stopCollisions = false;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class DefaultEnemy : MonoBehaviour
         {
             enemyPhysics.velocity = new Vector2(orientation * speed, enemyPhysics.velocity.y);
         }
-        
+
         if (orientation > 0)
         {
             transform.localScale = new Vector3(2, 2, 1);
