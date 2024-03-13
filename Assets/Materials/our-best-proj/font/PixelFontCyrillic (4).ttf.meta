@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 94bebd544f04c5941870e153a1de0357
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - PixelFontCyrillic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d0cc694054bf4c3478f99020cf42ffa6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

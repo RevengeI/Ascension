@@ -10615,14 +10615,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1241134489, guid: a76c56b6c1437b34dac8d5871b675f07, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 2113838761}
-    - target: {fileID: 1241134491, guid: a76c56b6c1437b34dac8d5871b675f07, type: 3}
-      propertyPath: m_BoundingShape2D
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2302510818069004879, guid: a76c56b6c1437b34dac8d5871b675f07, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -10678,9 +10670,4 @@ PrefabInstance:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2302510817668929359, guid: a76c56b6c1437b34dac8d5871b675f07, type: 3}
   m_PrefabInstance: {fileID: 1563920530}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2113838761 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 607760300193992067, guid: dfd64588d84e4b64a8390c73c7e82400, type: 3}
-  m_PrefabInstance: {fileID: 14588729}
   m_PrefabAsset: {fileID: 0}

@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     public GameObject[] selectables;
     private bool blockMove;
     private float Axis;
+    private float refVel = 0;
+    [SerializeField] private GameObject bg;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,9 @@ public class MainMenu : MonoBehaviour
             selector = 0;
         }
 
-        if(Input.GetButtonDown("Submit"))
+        MoveBG(selector);
+
+        if (Input.GetButtonDown("Submit"))
         {
             switch (selector)
             {
@@ -63,6 +67,8 @@ public class MainMenu : MonoBehaviour
                     break;
             }
         }
+
+        
     }
 
     void Loading(Saver loader)
@@ -74,5 +80,33 @@ public class MainMenu : MonoBehaviour
         SceneParameters.CharacterDoorKey = loader.CharacterDoorKey;
         SceneParameters.CheckBomb = loader.CheckBomb;
         SceneParameters.weaponIndex = loader.weaponIndex; 
+    }
+
+    void MoveBG(int selector)
+    {
+        switch (selector)
+        {
+            case 0:
+                if(bg.transform.position.y != -7)
+                {
+                    float newPos = Mathf.SmoothDamp(transform.position.y, -100, ref refVel, 0.6f);
+                    bg.transform.position = new Vector2(0, newPos);
+                }
+                break;
+            case 1:
+                if (bg.transform.position.y != 0)
+                {
+                    float newPos = Mathf.SmoothDamp(transform.position.y, 0, ref refVel, 0.6f);
+                    bg.transform.position = new Vector2(0, newPos);
+                }
+                break;
+            case 2:
+                if (bg.transform.position.y != 7)
+                {
+                    float newPos = Mathf.SmoothDamp(transform.position.y, 100, ref refVel, 0.6f);
+                    bg.transform.position = new Vector2(0, newPos);
+                }
+                break;
+        }
     }
 }

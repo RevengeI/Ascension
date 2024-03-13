@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 0a6b1b336f297c24990c3718396c5a64
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - ApexFontPixelated
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bf005614e0c7e7c489a50a7a0dc83e14, type: 3}
+  - {fileID: 12800000, guid: f786b8cd900e49148b2b764430a55c00, type: 3}
+  - {fileID: 12800000, guid: 6a98c667fd36d97479101bc79b458b7a, type: 3}
+  - {fileID: 12800000, guid: 29c859957188d394bb05c6afbe0915f2, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
