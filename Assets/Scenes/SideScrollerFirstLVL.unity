@@ -3663,7 +3663,7 @@ PrefabInstance:
     - target: {fileID: 607760300193992071, guid: dfd64588d84e4b64a8390c73c7e82400, type: 3}
       propertyPath: heart
       value: 
-      objectReference: {fileID: 21300000, guid: 5bad1d731815a384caa3e2aa8c335b30, type: 3}
+      objectReference: {fileID: 21300000, guid: 831f57b4315be384b9a22902230feb64, type: 3}
     - target: {fileID: 607760300193992071, guid: dfd64588d84e4b64a8390c73c7e82400, type: 3}
       propertyPath: width
       value: 0.5
