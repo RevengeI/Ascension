@@ -26,6 +26,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public bool[] Orientations = { false, false, false, false }; // [0] - up, [1] - up+direction, [2] - down, [3] - down+direction
     public SpriteRenderer[] hearts;
     public Sprite heart;
+    public Animator animator;
     void Start()
     {
         move = gameObject.GetComponent<Rigidbody2D>();
@@ -64,6 +65,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             }
             
         }
+        animator.SetFloat("Speed", Mathf.Abs(move.velocity.x));
         if (run)
         {
             runningSpeed = Mathf.MoveTowards(runningSpeed, 2f, 1f * Time.deltaTime);

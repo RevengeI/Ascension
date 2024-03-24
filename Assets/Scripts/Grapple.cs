@@ -31,7 +31,7 @@ public class Grapple : WeaponClass
 
     void Update()
     {
-        line.SetPosition(0, new Vector3 (player.transform.position.x, player.transform.position.y + 1f, 0));
+        line.SetPosition(0, new Vector3 (player.transform.position.x, player.transform.position.y, 0));
         line.SetPosition(1, new Vector3(transform.position.x, transform.position.y, 0));
         if (!Grappled && !Pulled)
         {

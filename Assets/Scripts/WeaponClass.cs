@@ -24,7 +24,7 @@ public class WeaponClass : MonoBehaviour
         Grounded = player.GetComponent<CharacterMoviesSideScroller>().OnGround;
         Orientations = player.GetComponent<CharacterMoviesSideScroller>().Orientations;
         vec2x = player.GetComponent<CharacterMoviesSideScroller>().vec2.x;
-        transform.position = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
+        transform.position = new Vector2(player.transform.position.x, player.transform.position.y);
         rigid = gameObject.GetComponent<Rigidbody2D>(); //getting all needed components
         DeclareOrientation();
         AdditionalCall();
