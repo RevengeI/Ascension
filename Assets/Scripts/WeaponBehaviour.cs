@@ -88,6 +88,7 @@ public class WeaponBehaviour : MonoBehaviour
         if (Input.GetButtonDown("Shoot"))
         {
             Weapon_Shoot();
+            gameObject.GetComponent<Animator>().SetTrigger("Shoot");
         }
     }
 }

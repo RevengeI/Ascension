@@ -30,7 +30,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     void Start()
     {
         move = gameObject.GetComponent<Rigidbody2D>();
-        if (SceneParameters.BalconyExit == 1)
+        if (SceneParameters.ExitNumber == 1)
         {
             CharacterPosition.position = new Vector2(91.5f, 2f);
         }
@@ -38,7 +38,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
     void Update()
     {
-        if(Cutscened)
+        if (Cutscened)
         {
             return;
         }
@@ -61,9 +61,9 @@ public class CharacterMoviesSideScroller : MonoBehaviour
                     move.isKinematic = false;
                     move.velocity = new Vector2(move.velocity.x, jumpForce);
                 }
-                
+
             }
-            
+
         }
         animator.SetFloat("Speed", Mathf.Abs(move.velocity.x));
         if (run)
@@ -88,7 +88,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
         if (!Grappled && Sticky)
         {
-            if (OnGround || (move.velocity.x < 10 * runningSpeed && move.velocity.x > -10 * runningSpeed)) 
+            if (OnGround || (move.velocity.x < 10 * runningSpeed && move.velocity.x > -10 * runningSpeed))
             {
                 Sticky = false;
             }
@@ -111,11 +111,11 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D other)
     {
-        
+
         if (other.gameObject.tag == "Slope")
         {
 
-            
+
             if (vec2.x == 0)
             {
                 move.velocity = new Vector2(0, 0);
@@ -123,7 +123,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             }
             if (vec2.x != 0)
             {
-                if(move.velocity.y < 0)
+                if (move.velocity.y < 0)
                 {
                     move.gravityScale = 24;
                 }
@@ -137,24 +137,24 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             {
                 move.gravityScale = 4;
                 move.isKinematic = false;
-                
-                
+
+
             }
-            
+
         }
 
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
-        
+
         if (other.gameObject.tag == "Slope")
         {
             move.isKinematic = false;
             move.gravityScale = 4;
         }
     }
-    
+
     void OrientationCheck()
     {
         if (Input.GetAxisRaw("Vertical") == 1)
@@ -195,4 +195,5 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             Grappled = false;
         }
     }
+
 }

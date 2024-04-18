@@ -8,7 +8,7 @@ public class Shotgun : WeaponClass
 
     void Update()
     {
-        rigid.velocity = Orientation * speed * 4 + new Vector2 (RNG, RNG);
+        rigid.velocity = Orientation * speed * 4 + new Vector2 (RNG, RNG) ;
         StartCoroutine(StopLiving());
     }
 

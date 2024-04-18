@@ -23,7 +23,7 @@ public class InputWindow : MonoBehaviour
         {
             if (Input.GetButtonDown("Door"))
             {
-                SceneParameters.BalconyExit = DoorNumber;
+                SceneParameters.ExitNumber = DoorNumber;
                 SceneManager.LoadScene(SceneMovie);
             }
         }

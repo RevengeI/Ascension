@@ -409,6 +409,7 @@
 "Assets/Scripts/WeaponBehaviour.cs"
 "Assets/Scripts/WeaponClass.cs"
 "Assets/Scripts/WeaponClassTopDown.cs"
+"Assets/StopWithTheShooting.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
@@ -443,6 +444,8 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/Wireframe/Examples/Scripts/AutoRotate.cs"
+"Assets/Wireframe/ImageEffect/WireframeImageEffect.cs"
 -langversion:9.0
 
 /deterministic

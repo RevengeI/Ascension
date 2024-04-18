@@ -10,11 +10,7 @@ public class CharacterMoves : MonoBehaviour
     public Transform CharacterPosition;
     public float width;
     public float height;
-    public LayerMask WhatsIsKey;
-    public LayerMask WhatsIsBomb;
     public bool KeyDetected;
-    public GameObject KeySprite;
-    public GameObject BombSprite;
     public bool BombCheck = true;
     public bool[] Orientations = { false, false, false, false }; // right - down - left - up
     public SpriteRenderer[] hearts;
@@ -29,15 +25,15 @@ public class CharacterMoves : MonoBehaviour
     {
         KeyDetected = false;
         move = GetComponent<Rigidbody2D>();
-        if (SceneParameters.BalconyExit == 2)
+        if (SceneParameters.ExitNumber == 2)
         {
             CharacterPosition.position = new Vector2(-29.8f, 3.43f);
         }
-        if (SceneParameters.BalconyExit == 1)
+        if (SceneParameters.ExitNumber == 1)
         {
             CharacterPosition.position = new Vector2(-1.24f, 3.43f);
         }
-        SceneParameters.BalconyExit = 0;
+        SceneParameters.ExitNumber = 0;
         KeyDetected = SceneParameters.CharacterDoorKey;
         BombCheck = SceneParameters.CheckBomb;
     }
@@ -97,25 +93,7 @@ public class CharacterMoves : MonoBehaviour
         }
 
 
-        if (Physics2D.OverlapBox(CharacterPosition.position, new Vector2(width, height), 0, WhatsIsKey))
-        {
-            SceneParameters.CharacterDoorKey = KeyDetected = true;
-        }
-        if (KeyDetected == true)
-        {
-            KeySprite.SetActive(false);
-        }
 
-
-        if (Physics2D.OverlapBox(CharacterPosition.position, new Vector2(width, height), 0, WhatsIsBomb) == true)
-        {
-            SceneParameters.CheckBomb = BombCheck = false;
-            HealthCharacter.Health--;
-        }
-        if (BombCheck == false)
-        {
-            BombSprite.SetActive(false);
-        }
 
         if (HealthCharacter.Health > HealthCharacter.MaxHealth)
         {

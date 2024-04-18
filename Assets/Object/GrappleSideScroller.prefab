@@ -125,6 +125,8 @@ MonoBehaviour:
   height: 1
   width: 1
   timeToLive: 0
+  offsetX: 0.4
+  offsetY: 0.4
   joint: {fileID: 0}
   Grappled: 0
   Pulled: 0

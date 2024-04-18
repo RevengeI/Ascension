@@ -75,7 +75,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneParameters.Health = loader.Health;
         SceneParameters.MaxHealth = loader.MaxHealth;
-        SceneParameters.BalconyExit = loader.BalconyExit;
+        SceneParameters.ExitNumber = loader.ExitNumber;
         SceneParameters.CharacterDoor = loader.CharacterDoor;
         SceneParameters.CharacterDoorKey = loader.CharacterDoorKey;
         SceneParameters.CheckBomb = loader.CheckBomb;

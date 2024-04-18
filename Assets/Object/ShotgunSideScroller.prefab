@@ -51,6 +51,8 @@ MonoBehaviour:
   height: 0.18
   width: 0.18
   timeToLive: 0
+  offsetX: 0.4
+  offsetY: 0.4
 --- !u!212 &-8598638108164707013
 SpriteRenderer:
   m_ObjectHideFlags: 0

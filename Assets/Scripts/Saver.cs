@@ -8,7 +8,7 @@ public class Saver
 {
     public int Health;
     public int MaxHealth;
-    public int BalconyExit;
+    public int ExitNumber;
     public bool CharacterDoor;
     public bool CharacterDoorKey;
     public bool CheckBomb;
@@ -18,7 +18,7 @@ public class Saver
     {
         Health = SceneParameters.Health;
         MaxHealth = SceneParameters.MaxHealth;
-        BalconyExit = SceneParameters.BalconyExit;
+        ExitNumber = SceneParameters.ExitNumber;
         CharacterDoor = SceneParameters.CharacterDoor;
         CharacterDoorKey = SceneParameters.CharacterDoorKey;
         CheckBomb = SceneParameters.CheckBomb;

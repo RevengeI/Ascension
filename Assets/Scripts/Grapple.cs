@@ -31,7 +31,7 @@ public class Grapple : WeaponClass
 
     void Update()
     {
-        line.SetPosition(0, new Vector3 (player.transform.position.x, player.transform.position.y, 0));
+        line.SetPosition(0, new Vector3 (player.transform.position.x + offsetX, player.transform.position.y + offsetY, 0));
         line.SetPosition(1, new Vector3(transform.position.x, transform.position.y, 0));
         if (!Grappled && !Pulled)
         {
@@ -41,6 +41,7 @@ public class Grapple : WeaponClass
         
         if(Grappled)
         {
+            offsetX = 0; offsetY = 0; 
             PendulumMotion();
         }
 
@@ -239,13 +240,16 @@ public class Grapple : WeaponClass
                   Grappled = false;
                 player.GetComponent<CharacterMoviesSideScroller>().Grappled = false;
                 player.velocity = new Vector2((player.transform.position.x - transform.position.x) * 15, 0);
-                player.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+                player.AddForce(new Vector2(0, 20), ForceMode2D.Impulse);
                   
                   Destroy(gameObject);
               }
               if(Input.GetAxisRaw("Vertical") == -1)
               {
-                  joint.distance = 6f;
+                player.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                player.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+                player.constraints &= RigidbodyConstraints2D.FreezeRotation;
+                joint.distance = 6f;
                   walljump = false;
               }
         }
