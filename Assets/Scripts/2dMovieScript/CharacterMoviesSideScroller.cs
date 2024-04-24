@@ -95,18 +95,6 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
         OnGround = Physics2D.OverlapBox(GroundCheck.position, new Vector2(width, height), 0, Ground);
         OrientationCheck();
-
-        if (healthBar.Health > healthBar.MaxHealth)
-        {
-            healthBar.Health = healthBar.MaxHealth;
-        }
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < healthBar.Health)
-                hearts[i].sprite = heart;
-            else
-                hearts[i].sprite = null;
-        }
     }
 
     void OnCollisionStay2D(Collision2D other)
