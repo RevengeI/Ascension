@@ -60,7 +60,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\2dMovieScript\CharacterMoviesSideScroller.cs" />
     <Compile Include="Assets\Effects Pro\Scripts\Effects.cs" />
-    <Compile Include="Assets\Scripts\Loading\Waiter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\2dMovieScript\CharacterMoves.cs" />

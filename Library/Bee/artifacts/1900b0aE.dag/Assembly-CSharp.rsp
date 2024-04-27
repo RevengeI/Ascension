@@ -398,7 +398,6 @@
 "Assets/Scripts/HealthUnit.cs"
 "Assets/Scripts/InputWindow.cs"
 "Assets/Scripts/Key.cs"
-"Assets/Scripts/Loading/Waiter.cs"
 "Assets/Scripts/MainMenu/CallPauseMenu.cs"
 "Assets/Scripts/MainMenu/MainMenu.cs"
 "Assets/Scripts/MainMenu/PauseMenu.cs"
