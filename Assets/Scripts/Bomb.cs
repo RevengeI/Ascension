@@ -18,7 +18,7 @@ public class Bomb : MonoBehaviour
         if (other.tag == "Player")
         {
             BombSprite.SetActive(false);
-            HealthCharacter.Health -= 3;
+            SceneParameters.Health -= 3;
         }
     }
 }

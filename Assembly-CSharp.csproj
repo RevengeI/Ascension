@@ -71,6 +71,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\SpritesStorage.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\WeaponClassTopDown.cs" />
     <Compile Include="Assets\Scripts\WeaponClass.cs" />
@@ -96,7 +97,6 @@
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\WeaponBehaviour.cs" />
     <Compile Include="Assets\Scripts\InputWindow.cs" />
-    <Compile Include="Assets\Scripts\CameraMove.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Saver.cs" />
     <Compile Include="Assets\Scripts\HealthUnit.cs" />

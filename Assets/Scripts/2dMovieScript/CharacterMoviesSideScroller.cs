@@ -20,21 +20,16 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public bool Grappled = false;
     public bool Sticky = false;
     public bool Cutscened = false;
-    public HealthBar healthBar;
     public float runningSpeed = 1f;
+    public bool damaged = false;
     public bool run;
     public bool[] Orientations = { false, false, false, false }; // [0] - up, [1] - up+direction, [2] - down, [3] - down+direction
-    public SpriteRenderer[] hearts;
-    public Sprite heart;
     public Animator animator;
     void Start()
     {
         move = gameObject.GetComponent<Rigidbody2D>();
-        if (SceneParameters.ExitNumber == 1)
-        {
-            CharacterPosition.position = new Vector2(91.5f, 2f);
-        }
-    }
+        animator = gameObject.GetComponent<Animator>();
+}
 
     void Update()
     {
@@ -58,6 +53,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             {
                 if (Input.GetButtonDown("Jump"))
                 {
+                    animator.SetTrigger("Jump");
                     move.isKinematic = false;
                     move.velocity = new Vector2(move.velocity.x, jumpForce);
                 }
@@ -66,6 +62,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
         }
         animator.SetFloat("Speed", Mathf.Abs(move.velocity.x));
+        animator.SetFloat("Falling", move.velocity.y);
         if (run)
         {
             runningSpeed = Mathf.MoveTowards(runningSpeed, 2f, 1f * Time.deltaTime);
@@ -96,16 +93,24 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         OnGround = Physics2D.OverlapBox(GroundCheck.position, new Vector2(width, height), 0, Ground);
         OrientationCheck();
 
-        if (healthBar.Health > healthBar.MaxHealth)
+        //
+        //
+        if(damaged)
         {
-            healthBar.Health = healthBar.MaxHealth;
-        }
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < healthBar.Health)
-                hearts[i].sprite = heart;
-            else
-                hearts[i].sprite = null;
+            Cutscened = true;
+            move.velocity = new Vector2(0, 0);
+            animator.SetTrigger("Hurt");
+            StartCoroutine(Invincibility());
+            StartCoroutine(Knockback());
+            if(SceneParameters.Health < 0 && SceneParameters.exposedCore == false)
+            {
+                SceneParameters.exposedCore = true;
+            }
+            if(SceneParameters.exposedCore == true)
+            {
+                Die();
+            }
+            damaged = false;
         }
     }
 
@@ -196,4 +201,31 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
     }
 
+    IEnumerator Invincibility()
+    {
+        Physics2D.IgnoreLayerCollision(3, 11, true);
+        
+        yield return new WaitForSeconds(1.5f);
+        Physics2D.IgnoreLayerCollision(3, 11, false);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+
+    }
+
+    IEnumerator Knockback()
+    {
+        move.AddForce(new Vector2(-10 * gameObject.transform.localScale.x, 0.3f), ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.2f);
+        Cutscened = false;
+        move.velocity = new Vector2(0, 0);
+    }
+
+    void Flicker()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
+    }
+
+    void Die()
+    {
+
+    }
 }

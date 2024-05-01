@@ -33,21 +33,21 @@ MonoBehaviour:
       mode: 0
       viewWindowTitle: Game
       playModeViewSettings:
-        rid: 965388108238159872
+        rid: 5694215213857112064
     - displayName: Generic PnP Monitor
       displayId: 1592791097
       enabled: 1
       mode: 0
       viewWindowTitle: Game
       playModeViewSettings:
-        rid: 965388108238159873
+        rid: 5694215213857112065
     - displayName: Generic PnP Monitor
       displayId: 1465703850
       enabled: 1
       mode: 0
       viewWindowTitle: Game
       playModeViewSettings:
-        rid: 5488874321897586688
+        rid: 5694215213857112066
     m_buildTarget: 19
     displayAPIMode: 1
     m_displayAPIUseSystemConfiguration: 0
@@ -62,13 +62,13 @@ MonoBehaviour:
     mode: 1
     viewWindowTitle: Game
     playModeViewSettings:
-      rid: 4519795849051766867
+      rid: 7079020930567503887
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 965388108238159872
+    - rid: 5694215213857112064
       type: {class: GameViewFullscreenSettings, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data:
         m_displayNumber: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
         m_showStats: 0
         m_showGizmos: 0
         m_selectedSizeIndex: 0
-    - rid: 965388108238159873
+    - rid: 5694215213857112065
       type: {class: GameViewFullscreenSettings, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data:
         m_displayNumber: 1
@@ -86,19 +86,19 @@ MonoBehaviour:
         m_showStats: 0
         m_showGizmos: 0
         m_selectedSizeIndex: 0
-    - rid: 4519795849051766867
+    - rid: 5694215213857112066
       type: {class: GameViewFullscreenSettings, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data:
-        m_displayNumber: 0
+        m_displayNumber: 2
         m_showToolbar: 0
         m_vsyncEnabled: 0
         m_showStats: 0
         m_showGizmos: 0
         m_selectedSizeIndex: 0
-    - rid: 5488874321897586688
+    - rid: 7079020930567503887
       type: {class: GameViewFullscreenSettings, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data:
-        m_displayNumber: 2
+        m_displayNumber: 0
         m_showToolbar: 0
         m_vsyncEnabled: 0
         m_showStats: 0

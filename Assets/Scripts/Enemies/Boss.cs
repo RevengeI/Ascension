@@ -66,7 +66,7 @@ public class Boss : DefaultEnemy
         }
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<CharacterMoviesSideScroller>().healthBar.Health--;
+            SceneParameters.Health--;
         }
     }
 

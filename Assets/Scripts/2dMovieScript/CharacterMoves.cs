@@ -16,7 +16,6 @@ public class CharacterMoves : MonoBehaviour
     public SpriteRenderer[] hearts;
     public Sprite heart;
 
-    public HealthBar HealthCharacter;
     
     private Vector2 vec2;
     private float diagonalFixed = 0.7075f;
@@ -95,13 +94,13 @@ public class CharacterMoves : MonoBehaviour
 
 
 
-        if (HealthCharacter.Health > HealthCharacter.MaxHealth)
+        if (SceneParameters.Health > SceneParameters.MaxHealth)
         {
-            HealthCharacter.Health = HealthCharacter.MaxHealth;
+            SceneParameters.Health = SceneParameters.MaxHealth;
         }
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < HealthCharacter.Health)
+            if (i < SceneParameters.Health)
                 hearts[i].sprite = heart;
             else
                 hearts[i].sprite = null;

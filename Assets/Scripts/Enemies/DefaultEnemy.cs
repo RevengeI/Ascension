@@ -7,6 +7,7 @@ public class DefaultEnemy : MonoBehaviour
     public int orientation;
     public int speed;
     public int health;
+    public int damage;
     protected Rigidbody2D enemyPhysics;
     public bool launcher = false;
     protected bool do_once = false;
@@ -45,7 +46,7 @@ public class DefaultEnemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (stopCollisions)
+        /*if (stopCollisions)
         {
             GameObject[] markers = GameObject.FindGameObjectsWithTag("EnemyMarker");
             foreach (GameObject marker in markers)
@@ -62,7 +63,7 @@ public class DefaultEnemy : MonoBehaviour
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), marker.GetComponent<Collider2D>(), false);
             }
             do_once = false;
-        }
+        }*/
         if (collision.gameObject.tag == "EnemyMarker")
         {
             orientation *= -1;
@@ -73,7 +74,8 @@ public class DefaultEnemy : MonoBehaviour
         }    
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<CharacterMoviesSideScroller>().healthBar.Health--;
+            SceneParameters.Health -= damage ;
+            collision.gameObject.GetComponent<CharacterMoviesSideScroller>().damaged = true;
         }
     }
 

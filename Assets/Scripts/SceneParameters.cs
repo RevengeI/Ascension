@@ -1,9 +1,8 @@
 
 public static class SceneParameters
 {
-    public static int Health = 4;
-    public static int MaxHealth = 4;
-    public static bool healthType = false;
+    public static int Health = 1;
+    public static int MaxHealth = 1499;
     public static bool exposedCore = false;
     public static int ExitNumber = 0;
     public static bool CharacterDoor = false;

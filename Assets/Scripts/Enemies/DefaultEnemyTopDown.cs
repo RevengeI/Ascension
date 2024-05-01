@@ -73,7 +73,7 @@ public class DefaultEnemyTopDown : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<CharacterMoves>().HealthCharacter.Health--;
+            SceneParameters.Health--;
         }
     }
 
