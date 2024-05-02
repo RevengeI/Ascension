@@ -10,11 +10,7 @@ public class CharacterMoves : MonoBehaviour
     public Transform CharacterPosition;
     public float width;
     public float height;
-    public bool KeyDetected;
-    public bool BombCheck = true;
-    public bool[] Orientations = { false, false, false, false }; // right - down - left - up
-    public SpriteRenderer[] hearts;
-    public Sprite heart;
+       public bool[] Orientations = { false, false, false, false }; // right - down - left - up
 
     
     private Vector2 vec2;
@@ -22,19 +18,7 @@ public class CharacterMoves : MonoBehaviour
 
     void Start()
     {
-        KeyDetected = false;
         move = GetComponent<Rigidbody2D>();
-        if (SceneParameters.ExitNumber == 2)
-        {
-            CharacterPosition.position = new Vector2(-29.8f, 3.43f);
-        }
-        if (SceneParameters.ExitNumber == 1)
-        {
-            CharacterPosition.position = new Vector2(-1.24f, 3.43f);
-        }
-        SceneParameters.ExitNumber = 0;
-        KeyDetected = SceneParameters.CharacterDoorKey;
-        BombCheck = SceneParameters.CheckBomb;
     }
 
     void Update()
@@ -89,21 +73,6 @@ public class CharacterMoves : MonoBehaviour
                 Orientations[0] = false;
                 Orientations[2] = false;
             }
-        }
-
-
-
-
-        if (SceneParameters.Health > SceneParameters.MaxHealth)
-        {
-            SceneParameters.Health = SceneParameters.MaxHealth;
-        }
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < SceneParameters.Health)
-                hearts[i].sprite = heart;
-            else
-                hearts[i].sprite = null;
         }
     }
 }

@@ -10,8 +10,7 @@ public class Door : MonoBehaviour
     public Transform Pos;
     public float width;
     public float hight;
-    public bool PresenceKey;
-    public CharacterMoves CharMov;
+    public bool PresenceKey = false;
     public Transform Pivot;
 
     private bool CharacterDetected;
@@ -35,7 +34,6 @@ public class Door : MonoBehaviour
 
         if (CharacterDetected == true)
         {
-            PresenceKey = CharMov.KeyDetected;
             if (PresenceKey == true)
             {
                 HelpSprite[0].SetActive(true);

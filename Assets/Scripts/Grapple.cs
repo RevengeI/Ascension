@@ -41,7 +41,7 @@ public class Grapple : WeaponClass
         
         if(Grappled)
         {
-            offsetX = 0; offsetY = 0; 
+           offsetX = 0; offsetY = 0; 
             PendulumMotion();
         }
 
@@ -100,12 +100,14 @@ public class Grapple : WeaponClass
 
         Grappled = true;
         player.GetComponent<CharacterMoviesSideScroller>().Grappled = true;
+        //player.constraints = ~RigidbodyConstraints2D.FreezeRotation;
         rigid.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                                                                                                            
         joint = gameObject.AddComponent(typeof(DistanceJoint2D)) as DistanceJoint2D;
         joint.connectedBody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         joint.anchor = new Vector2(0, 0);
-        joint.autoConfigureDistance = false;
-        joint.connectedAnchor = new Vector2(0, 1);
+       joint.autoConfigureDistance = false;
+       joint.connectedAnchor = new Vector2(0, 1);
         joint.distance = 1f;
     }
     
@@ -156,10 +158,12 @@ public class Grapple : WeaponClass
                 if (angle > 0.5f && player.transform.position.x - transform.position.x < 0)
                 {
                     player.AddForce(new Vector2(-1 * angle * 500, -1 *angle * 200), ForceMode2D.Force);
+                    
                 }
                 else
                 {
                     player.AddForce(new Vector2(angle * 500, 0), ForceMode2D.Force); //40
+                    
                 }
                 yield return new WaitForSeconds(0.1f);
             }
@@ -171,10 +175,12 @@ public class Grapple : WeaponClass
             {
                 if (angle > 0.5f && player.transform.position.x - transform.position.x > 0)
                 {
+                    
                     player.AddForce(new Vector2(angle * 500, -1 * angle * 200), ForceMode2D.Force);
                 }
                 else
                 {
+                    
                     player.AddForce(new Vector2(-1 * angle * 500, 0), ForceMode2D.Force);
                 }
                 yield return new WaitForSeconds(0.1f);

@@ -14,6 +14,7 @@ TagManager:
   - RoomType
   - Slope
   - Walljump
+  - Converter
   layers:
   - Default
   - TransparentFX

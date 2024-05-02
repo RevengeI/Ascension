@@ -10,6 +10,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public float speedCharacter;
     public float jumpForce;
     public bool OnGround;
+    public float maxSpeedWalk;
     public float maxSpeed;
     public Transform CharacterPosition;
     public Transform GroundCheck;
@@ -29,7 +30,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     {
         move = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
-}
+    }
 
     void Update()
     {
@@ -37,10 +38,17 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         {
             return;
         }
-        vec2.x = Input.GetAxis("Horizontal");
+        vec2.x = Input.GetAxisRaw("Horizontal");
         if (!Sticky)
         {
-            move.velocity = new Vector2(vec2.x * speedCharacter * runningSpeed, move.velocity.y);
+            if(Mathf.Abs(move.velocity.x) < maxSpeedWalk * runningSpeed || Mathf.Sign(vec2.x) != Mathf.Sign(move.velocity.x))
+            {
+                move.AddForce(new Vector2(vec2.x * speedCharacter * runningSpeed, 0), ForceMode2D.Force);
+            }
+            if(vec2.x == 0 && move.velocity.x != 0)
+            {
+                move.AddForce(new Vector2(-3 * move.velocity.x, 0));
+            }
             if (vec2.x < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
@@ -74,11 +82,14 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             run = true;
+            animator.SetBool("Run", run);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             run = false;
+            animator.SetBool("Run", run);
         }
+        
         if (Grappled)
         {
             Sticky = true;
@@ -91,6 +102,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             }
         }
         OnGround = Physics2D.OverlapBox(GroundCheck.position, new Vector2(width, height), 0, Ground);
+        animator.SetBool("OnGround", OnGround);
         OrientationCheck();
 
         //
@@ -112,6 +124,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             }
             damaged = false;
         }
+
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -123,9 +136,10 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
             if (vec2.x == 0)
             {
-                move.velocity = new Vector2(0, 0);
-                move.isKinematic = true;
+
+                move.gravityScale = 0;
             }
+            /*
             if (vec2.x != 0)
             {
                 if (move.velocity.y < 0)
@@ -138,10 +152,11 @@ public class CharacterMoviesSideScroller : MonoBehaviour
                 }
                 move.isKinematic = false;
             }
+            */
             if (Input.GetButtonDown("Jump"))
             {
-                move.gravityScale = 4;
-                move.isKinematic = false;
+                //move.gravityScale = 4;
+                //move.isKinematic = false;
 
 
             }

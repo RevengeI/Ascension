@@ -37,7 +37,7 @@ Transform:
   - {fileID: 607760300507035474}
   - {fileID: 1330846429159122587}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &607760300193992064
 SpriteRenderer:
@@ -105,7 +105,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2.82}
+  m_Size: {x: 1, y: 2.8101869}
   m_Direction: 0
 --- !u!50 &607760300193992070
 Rigidbody2D:
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5692f3a05e659864c891dba53dd743c1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   speedCharacter: 10
   jumpForce: 20
   OnGround: 1
+  maxSpeedWalk: 10
   maxSpeed: 50
   CharacterPosition: {fileID: 607760300193992067}
   GroundCheck: {fileID: 1330846429159122587}
@@ -156,16 +157,10 @@ MonoBehaviour:
   Grappled: 0
   Sticky: 0
   Cutscened: 0
-  healthBar: {fileID: 0}
   runningSpeed: 1
+  damaged: 0
   run: 0
   Orientations: 00000000
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  heart: {fileID: 21300000, guid: 831f57b4315be384b9a22902230feb64, type: 3}
   animator: {fileID: 1035135249}
 --- !u!114 &607760300193992077
 MonoBehaviour:

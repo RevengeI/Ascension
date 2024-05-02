@@ -119,7 +119,14 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+    <Compile Include="Assets\Scripts\AudioLooper.cs" />
     <Compile Include="Assets\Scripts\ShotgunTopDown.cs" />
+    <Compile Include="Assets\Scripts\TransitionBlock.cs" />
+    <Compile Include="Assets\Scripts\Converter.cs" />
+    <Compile Include="Assets\Scripts\Hatch.cs" />
+    <Compile Include="Assets\Scripts\FirstAppearance.cs" />
+    <Compile Include="Assets\Scripts\EntryHelper.cs" />
+    <Compile Include="Assets\Scripts\CameraFollowPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
