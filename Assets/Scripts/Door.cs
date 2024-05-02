@@ -10,7 +10,6 @@ public class Door : MonoBehaviour
     public Transform Pos;
     public float width;
     public float hight;
-    public bool PresenceKey = false;
     public Transform Pivot;
 
     private bool CharacterDetected;
@@ -19,7 +18,6 @@ public class Door : MonoBehaviour
 
     void Start()
     {
-        PresenceKey = false;
         isOpen = SceneParameters.CharacterDoor;
         if (isOpen == true)
         {
@@ -34,12 +32,17 @@ public class Door : MonoBehaviour
 
         if (CharacterDetected == true)
         {
-            if (PresenceKey == true)
+            if (SceneParameters.keys > 0 || SceneParameters.door1)
             {
                 HelpSprite[0].SetActive(true);
 
                 if (Input.GetButtonDown("Door"))
                 {
+                    if(!SceneParameters.door1)
+                    {
+                        SceneParameters.door1 = true;
+                        SceneParameters.keys--;
+                    }
                     isOpened();
                 }
             }

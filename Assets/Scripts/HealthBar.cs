@@ -13,7 +13,7 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()

@@ -25,8 +25,5 @@ public class CameraFollowPlayer : MonoBehaviour
         
     }
 
-    void FindPlayer(Scene scene, LoadSceneMode mode)
-    {
-        
-    }
+
 }

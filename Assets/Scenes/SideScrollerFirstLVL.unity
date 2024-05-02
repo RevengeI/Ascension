@@ -2855,7 +2855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760d970d375574b468618ca5cb6b3b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryNumber: 2
+  entryNumber: 1
 --- !u!1 &1768893594
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,7 +3863,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2905943844034641841, guid: 71081ae4dae9eb244af2ed2fe720cba5, type: 3}
       propertyPath: entryNumber
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7998460409091435055, guid: 71081ae4dae9eb244af2ed2fe720cba5, type: 3}
       propertyPath: m_Name

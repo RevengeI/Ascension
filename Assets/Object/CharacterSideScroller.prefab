@@ -37,7 +37,7 @@ Transform:
   - {fileID: 607760300507035474}
   - {fileID: 1330846429159122587}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &607760300193992064
 SpriteRenderer:
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 3436932263045342289}
   m_Layer: 3
   m_Name: GroundCheck
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

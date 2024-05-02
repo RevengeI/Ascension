@@ -287,6 +287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterTopDown
       objectReference: {fileID: 0}
+    - target: {fileID: 7323342982926731636, guid: b2fe05526eb39724cb4603a9bca44b46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7323342982926731645, guid: b2fe05526eb39724cb4603a9bca44b46, type: 3}
       propertyPath: Weapon
       value: 

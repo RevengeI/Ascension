@@ -5,22 +5,26 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
 
-    public GameObject KeySprite;
-    public LayerMask Player;
-    public float width;
-    public float hight;
-    public Transform KeyPosition;
 
     void Start()
     {
-        KeySprite.SetActive(true);
+        if(!SceneParameters.key1)
+        {
+            Destroy(gameObject);
+        }
     }
     
     void Update()
     {
-        if (Physics2D.OverlapBox(KeyPosition.position, new Vector2(width, hight), 0, Player) == true)
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
         {
-            KeySprite.SetActive(false);
+            SceneParameters.key1 = false;
+            SceneParameters.keys++;
+            Destroy(gameObject);
         }
     }
 }
