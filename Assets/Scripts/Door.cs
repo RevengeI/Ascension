@@ -18,7 +18,6 @@ public class Door : MonoBehaviour
 
     void Start()
     {
-        isOpen = SceneParameters.CharacterDoor;
         if (isOpen == true)
         {
             isOpen = !isOpen;
@@ -71,6 +70,5 @@ public class Door : MonoBehaviour
             Pivot.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), 1);
         }
         isOpen = !isOpen;
-        SceneParameters.CharacterDoor = isOpen;
     }
 }

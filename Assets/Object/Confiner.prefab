@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3096940634948018513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3096940634948018519}
+  - component: {fileID: 3096940634948018518}
+  m_Layer: 13
+  m_Name: Confiner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3096940634948018519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096940634948018513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.770646, y: 1.2489313, z: -6.4259486}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &3096940634948018518
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096940634948018513}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 96.22491, y: 30.759905}
+      - {x: 92.30146, y: 30.876957}
+      - {x: 85.12964, y: 30.87528}
+      - {x: 74.29457, y: 30.985498}
+      - {x: 73.62164, y: 24.306528}
+      - {x: 50.75826, y: 24.5299}
+      - {x: 41.41038, y: 24.406555}
+      - {x: 13.777129, y: 14.880155}
+      - {x: 5.0011606, y: 14.872071}
+      - {x: 0.9728079, y: 14.38066}
+      - {x: -3.7501054, y: 11.320188}
+      - {x: -5.9414387, y: 10.037223}
+      - {x: -6.3772607, y: -12.372492}
+      - {x: 42.117523, y: -12.2198}
+      - {x: 58.78457, y: -9.599967}
+      - {x: 106.18029, y: -9.706006}
+      - {x: 106.20811, y: 2.6589599}
+      - {x: 106.156235, y: 9.148348}
+      - {x: 106.50974, y: 12.780324}
+      - {x: 106.56682, y: -1.1330414}
+      - {x: 140.17265, y: -1.0395503}
+      - {x: 140.48227, y: 30.6972}
+  m_UseDelaunayMesh: 0

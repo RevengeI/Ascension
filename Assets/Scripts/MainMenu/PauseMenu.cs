@@ -49,19 +49,31 @@ public class PauseMenu : MonoBehaviour
                     Time.timeScale = 1f;
                     GameObject.Find("PauseCaller").GetComponent<CallPauseMenu>().paused = false;
                     break;
-                case 1: //Save
-                    Saver save = new Saver();
+                case 1: //Load last Checkpoint
+                    Saver loader;
                     BinaryFormatter binForm = new BinaryFormatter();
-                    using (FileStream stream = new FileStream(@"C:\Users\WillowPunch\Desktop\save.dat", FileMode.Create))
+                    if (File.Exists(Application.persistentDataPath + @"\saves\save.dat"))
                     {
-                        binForm.Serialize(stream, save);
+                        using (FileStream stream = new FileStream(Application.persistentDataPath + @"\saves\save.dat", FileMode.Open))
+                        {
+                            loader = (Saver)binForm.Deserialize(stream);
+                        }
+                        MainMenu menuCall = new MainMenu();
+                        menuCall.Loading(loader);
+
+                        SceneManager.LoadSceneAsync(loader.SceneInt);
+
                     }
                     break;
                 case 2: //Main
                     Time.timeScale = 1f;
-                    SceneManager.LoadScene(2);
+                    GameObject Converter = GameObject.FindGameObjectWithTag("Converter");
+                    Destroy(Converter);
+                    SceneManager.LoadScene(0);
                     break;
             }
         }
     }
+
+
 }

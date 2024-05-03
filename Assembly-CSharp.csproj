@@ -62,6 +62,7 @@
     <Compile Include="Assets\Effects Pro\Scripts\Effects.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+    <Compile Include="Assets\Scripts\ExposedCore.cs" />
     <Compile Include="Assets\Scripts\2dMovieScript\CharacterMoves.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Wireframe\Examples\Scripts\AutoRotate.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Scripts\GrappleTopDown.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\Enemies\DefaultEnemy.cs" />
+    <Compile Include="Assets\Scripts\FirstAppearance.cs" />
     <Compile Include="Assets\Scripts\RoomTypeChecker.cs" />
     <Compile Include="Assets\Scripts\Grapple.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Scripts\Converter.cs" />
     <Compile Include="Assets\Scripts\Enemies\DefaultEnemyTopDown.cs" />
     <Compile Include="Assets\Scripts\SceneParameters.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
@@ -105,8 +108,10 @@
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\MainMenu\PauseMenu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\Hatch.cs" />
     <Compile Include="Assets\Scripts\ExitDoor.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\Scripts\CameraFollowPlayer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Wireframe\ImageEffect\WireframeImageEffect.cs" />
@@ -115,18 +120,16 @@
     <Compile Include="Assets\StopWithTheShooting.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets\Scripts\EntryHelper.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\Scripts\TransitionBlock.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\AudioLooper.cs" />
     <Compile Include="Assets\Scripts\ShotgunTopDown.cs" />
-    <Compile Include="Assets\Scripts\TransitionBlock.cs" />
-    <Compile Include="Assets\Scripts\Converter.cs" />
-    <Compile Include="Assets\Scripts\Hatch.cs" />
-    <Compile Include="Assets\Scripts\FirstAppearance.cs" />
-    <Compile Include="Assets\Scripts\EntryHelper.cs" />
-    <Compile Include="Assets\Scripts\CameraFollowPlayer.cs" />
+    <Compile Include="Assets\Scripts\CreateSaveDir.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\SaveMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -158,7 +161,6 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Effects Pro\Shaders\Sepia.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\Effects Pro\Textures\License.txt" />
     <None Include="Assets\Wireframe\Shaders\Resources\WireframeTransparent-Global.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Wireframe\Shaders\Resources\Wireframe-Global.shader" />

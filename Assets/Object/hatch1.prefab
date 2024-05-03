@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 8873794540333090631}
   - component: {fileID: 8873794540333090630}
   - component: {fileID: 8873794540333090629}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hatch1
   m_TagString: Transitions
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ Transform:
   - {fileID: 8873794538383469474}
   - {fileID: 8873794538386035197}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8873794540333090625
 SpriteRenderer:
@@ -265,4 +265,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0753f8ca655714b4eb8340c298967690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntryNumber: 1

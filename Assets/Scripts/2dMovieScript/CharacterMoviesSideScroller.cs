@@ -112,16 +112,18 @@ public class CharacterMoviesSideScroller : MonoBehaviour
             Cutscened = true;
             move.velocity = new Vector2(0, 0);
             animator.SetTrigger("Hurt");
-            StartCoroutine(Invincibility());
-            StartCoroutine(Knockback());
-            if(SceneParameters.Health < 0 && SceneParameters.exposedCore == false)
+            if (SceneParameters.Health < 0 && SceneParameters.exposedCore == false)
             {
                 SceneParameters.exposedCore = true;
             }
-            if(SceneParameters.exposedCore == true)
+            else if (SceneParameters.exposedCore == true)
             {
                 Die();
+                damaged = false;
+                return;
             }
+            StartCoroutine(Invincibility());
+            StartCoroutine(Knockback());
             damaged = false;
         }
 
@@ -219,8 +221,14 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     IEnumerator Invincibility()
     {
         Physics2D.IgnoreLayerCollision(3, 11, true);
-        
-        yield return new WaitForSeconds(1.5f);
+        if(!SceneParameters.exposedCore)
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(5f);
+        }
         Physics2D.IgnoreLayerCollision(3, 11, false);
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
@@ -241,6 +249,14 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
     void Die()
     {
+
+        Cutscened = true;
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        move.gravityScale = 0;
+        move.velocity = Vector2.zero;
+        move.constraints = RigidbodyConstraints2D.FreezePosition;
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        animator.SetTrigger("Die");
 
     }
 }

@@ -50,17 +50,22 @@ public class MainMenu : MonoBehaviour
             switch (selector)
             {
                 case 0:
-                    SceneManager.LoadSceneAsync(0);
+                    SceneManager.LoadSceneAsync(1);
                     break;
                 case 1:
                     Saver loader;
                     BinaryFormatter binForm = new BinaryFormatter();
-                    using (FileStream stream = new FileStream(@"C:\Users\WillowPunch\Desktop\save.dat", FileMode.Open))
+                    if(File.Exists(Application.persistentDataPath + @"\saves\save.dat"))
                     {
-                        loader = (Saver)binForm.Deserialize(stream);
+                        using (FileStream stream = new FileStream(Application.persistentDataPath + @"\saves\save.dat", FileMode.Open))
+                        {
+                            loader = (Saver)binForm.Deserialize(stream);
+                        }
+                        Loading(loader);
+
+                        SceneManager.LoadSceneAsync(loader.SceneInt);
+                        
                     }
-                    Loading(loader);
-                    SceneManager.LoadSceneAsync(loader.SceneInt);
                     break;
                 case 2:
                     Application.Quit();
@@ -71,15 +76,18 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    void Loading(Saver loader)
+    public void Loading(Saver loader)
     {
         SceneParameters.Health = loader.Health;
         SceneParameters.MaxHealth = loader.MaxHealth;
+        SceneParameters.exposedCore = loader.exposedCore;
         SceneParameters.ExitNumber = loader.ExitNumber;
-        SceneParameters.CharacterDoor = loader.CharacterDoor;
-        SceneParameters.CharacterDoorKey = loader.CharacterDoorKey;
-        SceneParameters.CheckBomb = loader.CheckBomb;
         SceneParameters.weaponIndex = loader.weaponIndex; 
+        SceneParameters.shotgunGet = loader.shotgunGet;
+        SceneParameters.clawsGet = loader.clawsGet;
+        SceneParameters.keys = loader.keys;
+        SceneParameters.key1 = loader.key1;
+        SceneParameters.door1 = loader.door1;
     }
 
     void MoveBG(int selector)
