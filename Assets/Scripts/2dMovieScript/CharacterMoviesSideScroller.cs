@@ -34,6 +34,10 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
     void Update()
     {
+        if(SceneParameters.Health > SceneParameters.MaxHealth)
+        {
+            SceneParameters.Health = SceneParameters.MaxHealth;
+        }    
         if (Cutscened)
         {
             return;

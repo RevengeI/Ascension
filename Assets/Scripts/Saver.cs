@@ -20,6 +20,9 @@ public class Saver
     public int keys;
     public bool key1;
     public bool door1;
+
+    public bool battery1;
+    public bool battery2;
     public Saver()
     {
         Health = SceneParameters.Health;
@@ -33,6 +36,9 @@ public class Saver
         keys = SceneParameters.keys;
         key1 = SceneParameters.key1;
         door1 = SceneParameters.door1;
+
+        battery1 = SceneParameters.battery1;
+        battery2 = SceneParameters.battery2;
 
         SceneInt = SceneManager.GetActiveScene().buildIndex;
     }

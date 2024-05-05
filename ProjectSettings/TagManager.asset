@@ -15,6 +15,7 @@ TagManager:
   - Slope
   - Walljump
   - Converter
+  - Transitions
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Front
+    uniqueID: 3316567653
+    locked: 0
+  - name: GetItem
+    uniqueID: 1841965767
     locked: 0

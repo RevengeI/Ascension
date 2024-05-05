@@ -23,6 +23,10 @@ public class CharacterMoves : MonoBehaviour
 
     void Update()
     {
+        if (SceneParameters.Health > SceneParameters.MaxHealth)
+        {
+            SceneParameters.Health = SceneParameters.MaxHealth;
+        }
         vec2.x = Input.GetAxis("Horizontal");
         vec2.y = Input.GetAxis("Vertical");
         

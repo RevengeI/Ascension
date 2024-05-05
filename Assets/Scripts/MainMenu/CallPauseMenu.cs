@@ -35,15 +35,9 @@ public class CallPauseMenu : MonoBehaviour
                 }
             }
         }
-
-        if (paused == false)
+        if(!paused)
         {
             Pause.SetActive(false);
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            Time.timeScale = 0;
         }
         if(saving)
         {

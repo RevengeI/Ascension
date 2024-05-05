@@ -1,7 +1,7 @@
 
 public static class SceneParameters
 {
-    public static int Health = 1;
+    public static int Health = 30;
     public static int MaxHealth = 99;
     public static bool exposedCore = false;
     
@@ -15,4 +15,6 @@ public static class SceneParameters
     public static bool key1 = true;
     public static bool door1 = false;
 
+    public static bool battery1 = true;
+    public static bool battery2 = true;
 }
