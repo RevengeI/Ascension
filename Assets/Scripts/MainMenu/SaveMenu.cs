@@ -14,7 +14,7 @@ public class SaveMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -50,6 +50,8 @@ public class SaveMenu : MonoBehaviour
                     break; 
             }
             Time.timeScale = 1f;
+            SceneParameters.exposedCore = false;
+            gameObject.SetActive(false);
         }
 
     }

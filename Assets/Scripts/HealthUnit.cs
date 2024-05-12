@@ -21,6 +21,10 @@ public class HealthUnit : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,4 +34,6 @@ public class HealthUnit : MonoBehaviour
             used = true;
         }
     }
+
+
 }

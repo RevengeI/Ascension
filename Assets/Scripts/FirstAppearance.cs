@@ -11,6 +11,7 @@ public class FirstAppearance : MonoBehaviour
         if(GameObject.FindGameObjectWithTag("Player") == null)
         {
             Instantiate(Player, transform.position, Quaternion.identity);
+            LoadUpgrades();
         }
     }
 
@@ -18,5 +19,10 @@ public class FirstAppearance : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void LoadUpgrades()
+    {
+
     }
 }

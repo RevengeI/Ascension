@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\2dMovieScript\CharacterMoviesSideScroller.cs" />
     <Compile Include="Assets\Scripts\StaticScripts\UpgradeTemplate.cs" />
     <Compile Include="Assets\Effects Pro\Scripts\Effects.cs" />
+    <Compile Include="Assets\Scripts\Loading\Waiter.cs" />
     <Compile Include="Assets\Scripts\ExposedCore.cs" />
     <Compile Include="Assets\Scripts\2dMovieScript\CharacterMoves.cs" />
     <Compile Include="Assets\Wireframe\Examples\Scripts\AutoRotate.cs" />
@@ -75,10 +76,11 @@
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Converter.cs" />
     <Compile Include="Assets\Scripts\Enemies\DefaultEnemyTopDown.cs" />
-    <Compile Include="Assets\Scripts\SceneParameters.cs" />
+    <Compile Include="Assets\Scripts\StaticScripts\SceneParameters.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\WeaponBehaviour.cs" />
     <Compile Include="Assets\Scripts\InputWindow.cs" />
+    <Compile Include="Assets\Scripts\StaticScripts\Batteries\Battery1.cs" />
     <Compile Include="Assets\Scripts\Saver.cs" />
     <Compile Include="Assets\Scripts\HealthUnit.cs" />
     <Compile Include="Assets\Scripts\Bomb.cs" />
@@ -93,20 +95,20 @@
     <Compile Include="Assets\Scripts\Enemies\Boss.cs" />
     <Compile Include="Assets\Scripts\MainMenu\SaveMenu.cs" />
     <Compile Include="Assets\Scripts\Shotgun.cs" />
-    <Compile Include="Assets\StopWithTheShooting.cs" />
     <Compile Include="Assets\Scripts\StaticScripts\Batteries\Battery.cs" />
     <Compile Include="Assets\Scripts\EntryHelper.cs" />
     <Compile Include="Assets\Scripts\EditorScripts\MeshExposeOrder.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\SaveStation.cs" />
     <Compile Include="Assets\Scripts\TransitionBlock.cs" />
     <Compile Include="Assets\Scripts\AudioLooper.cs" />
     <Compile Include="Assets\Scripts\ShotgunTopDown.cs" />
+    <Compile Include="Assets\Scripts\Spikes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Wireframe\Shaders\WireframeTransparent.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\Shaders\TMPBitmapVars\TMP_Bitmap1A2F56.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Wireframe\Shaders\WireframeShaded-Unlit.shader" />

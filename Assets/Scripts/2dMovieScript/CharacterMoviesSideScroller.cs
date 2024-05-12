@@ -12,7 +12,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public bool OnGround;
     public float maxSpeedWalk;
     public float maxSpeed;
-    public Transform CharacterPosition;
+    public float drag;
     public Transform GroundCheck;
     public float height;
     public float width;
@@ -24,6 +24,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
     public float runningSpeed = 1f;
     public bool damaged = false;
     public bool run;
+    public PhysicsMaterial2D PM2D;
     public bool[] Orientations = { false, false, false, false }; // [0] - up, [1] - up+direction, [2] - down, [3] - down+direction
     public Animator animator;
     void Start()
@@ -45,14 +46,6 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         vec2.x = Input.GetAxisRaw("Horizontal");
         if (!Sticky)
         {
-            if(Mathf.Abs(move.velocity.x) < maxSpeedWalk * runningSpeed || Mathf.Sign(vec2.x) != Mathf.Sign(move.velocity.x))
-            {
-                move.AddForce(new Vector2(vec2.x * speedCharacter * runningSpeed, 0), ForceMode2D.Force);
-            }
-            if(vec2.x == 0 && move.velocity.x != 0)
-            {
-                move.AddForce(new Vector2(-3 * move.velocity.x, 0));
-            }
             if (vec2.x < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
@@ -75,14 +68,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         }
         animator.SetFloat("Speed", Mathf.Abs(move.velocity.x));
         animator.SetFloat("Falling", move.velocity.y);
-        if (run)
-        {
-            runningSpeed = Mathf.MoveTowards(runningSpeed, 2f, 1f * Time.deltaTime);
-        }
-        if (!run)
-        {
-            runningSpeed = Mathf.MoveTowards(runningSpeed, 1f, 3f * Time.deltaTime);
-        }
+        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             run = true;
@@ -111,25 +97,30 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
         //
         //
-        if(damaged)
+        if(!SceneParameters.invincible)
         {
-            Cutscened = true;
-            move.velocity = new Vector2(0, 0);
-            animator.SetTrigger("Hurt");
-            if (SceneParameters.Health < 0 && SceneParameters.exposedCore == false)
+            if (damaged)
             {
-                SceneParameters.exposedCore = true;
-            }
-            else if (SceneParameters.exposedCore == true)
-            {
-                Die();
+                Cutscened = true;
+                SceneParameters.invincible = true;
+                move.velocity = new Vector2(0, 0);
+                animator.SetTrigger("Hurt");
+                if (SceneParameters.Health < 0 && SceneParameters.exposedCore == false)
+                {
+                    SceneParameters.exposedCore = true;
+                }
+                else if (SceneParameters.exposedCore == true)
+                {
+                    Die();
+                    damaged = false;
+                    return;
+                }
+                StartCoroutine(Invincibility());
+                StartCoroutine(Knockback());
                 damaged = false;
-                return;
             }
-            StartCoroutine(Invincibility());
-            StartCoroutine(Knockback());
-            damaged = false;
         }
+        
 
     }
 
@@ -145,20 +136,18 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
                 move.gravityScale = 0;
             }
-            /*
             if (vec2.x != 0)
             {
                 if (move.velocity.y < 0)
                 {
-                    move.gravityScale = 24;
+                    move.gravityScale = 4;
                 }
                 else
                 {
-                    move.gravityScale = 4;
+                    move.gravityScale = 1;
                 }
-                move.isKinematic = false;
+               // move.isKinematic = false;
             }
-            */
             if (Input.GetButtonDown("Jump"))
             {
                 //move.gravityScale = 4;
@@ -176,7 +165,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
         if (other.gameObject.tag == "Slope")
         {
-            move.isKinematic = false;
+            //move.isKinematic = false;
             move.gravityScale = 4;
         }
     }
@@ -216,9 +205,28 @@ public class CharacterMoviesSideScroller : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!GameObject.FindWithTag("Grapple"))
+        if (!Sticky)
+        {
+            if (Mathf.Abs(move.velocity.x) < maxSpeedWalk * runningSpeed || Mathf.Sign(vec2.x) != Mathf.Sign(move.velocity.x))
+            {
+                move.AddForce(new Vector2(vec2.x * speedCharacter * runningSpeed, 0), ForceMode2D.Impulse);
+            }
+            if (vec2.x == 0 && move.velocity.x != 0)
+            {
+                move.AddForce(new Vector2(-1 * drag * move.velocity.x, 0), ForceMode2D.Impulse);
+            }
+        }
+            if (!GameObject.FindWithTag("Grapple"))
         {
             Grappled = false;
+        }
+        if (run)
+        {
+            runningSpeed = Mathf.MoveTowards(runningSpeed, 2f, 1f * Time.fixedDeltaTime);
+        }
+        if (!run)
+        {
+            runningSpeed = Mathf.MoveTowards(runningSpeed, 1f, 3f * Time.fixedDeltaTime);
         }
     }
 
@@ -233,6 +241,7 @@ public class CharacterMoviesSideScroller : MonoBehaviour
         {
             yield return new WaitForSeconds(5f);
         }
+        SceneParameters.invincible = false;
         Physics2D.IgnoreLayerCollision(3, 11, false);
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 

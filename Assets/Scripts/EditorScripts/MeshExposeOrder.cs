@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using UnityEngine;
 using UnityEditor;
@@ -70,3 +71,4 @@ public class MeshRendererSortingEditor : Editor
     }
 
 }
+#endif

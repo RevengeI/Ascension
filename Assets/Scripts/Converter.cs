@@ -9,7 +9,6 @@ public class Converter : MonoBehaviour
 
     [SerializeField] GameObject playerTopDown;
     [SerializeField] GameObject playerSideScroll;
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -23,8 +22,6 @@ public class Converter : MonoBehaviour
     {
         SceneManager.sceneLoaded += loadLevel;
     }
-
-    // Update is called once per frame
     void Update()
     {
         SceneManager.activeSceneChanged += activeSceneChange;
@@ -51,7 +48,7 @@ public class Converter : MonoBehaviour
     void TypeSwitch()
     {
         roomType = GameObject.FindGameObjectWithTag("RoomType");
-        if (roomType.GetComponent<RoomTypeChecker>().RoomType)
+        if (roomType.GetComponent<RoomTypeChecker>().RoomType) // true - Topdown; false - SideScroll
         {
             playerTopDown.SetActive(false);
             playerSideScroll.SetActive(true);

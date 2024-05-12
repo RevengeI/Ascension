@@ -23,8 +23,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - Key
-  - Bomb
+  - 
+  - 
   - Ground
   - Markers
   - Projectiles
@@ -32,8 +32,8 @@ TagManager:
   - Grapple
   - Confines
   - Camera
-  - 
-  - 
+  - EnemyProjectiles
+  - FriendlyFire
   - 
   - 
   - 

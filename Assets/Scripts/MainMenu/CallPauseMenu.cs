@@ -7,7 +7,6 @@ public class CallPauseMenu : MonoBehaviour
     public GameObject Pause;
     public GameObject Save;
     public bool paused;
-    public bool saving;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +16,7 @@ public class CallPauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!saving)
-        {
+        
             if (Input.GetButtonDown("Start"))
             {
                 if (paused)
@@ -34,18 +32,11 @@ public class CallPauseMenu : MonoBehaviour
                     Time.timeScale = 0f;
                 }
             }
-        }
+        
         if(!paused)
         {
             Pause.SetActive(false);
         }
-        if(saving)
-        {
-            Save.SetActive(true);
-        }
-        else
-        {
-            Save.SetActive(false);
-        }
+        
     }
 }
