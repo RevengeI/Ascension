@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\StaticScripts\UpgradeTemplate.cs" />
     <Compile Include="Assets\Effects Pro\Scripts\Effects.cs" />
     <Compile Include="Assets\Scripts\Loading\Waiter.cs" />
+    <Compile Include="Assets\Scripts\StaticScripts\Batteries\Battery3.cs" />
     <Compile Include="Assets\Scripts\ExposedCore.cs" />
     <Compile Include="Assets\Scripts\2dMovieScript\CharacterMoves.cs" />
     <Compile Include="Assets\Wireframe\Examples\Scripts\AutoRotate.cs" />
@@ -81,13 +82,14 @@
     <Compile Include="Assets\Scripts\WeaponBehaviour.cs" />
     <Compile Include="Assets\Scripts\InputWindow.cs" />
     <Compile Include="Assets\Scripts\StaticScripts\Batteries\Battery1.cs" />
-    <Compile Include="Assets\Scripts\Saver.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\Saver.cs" />
     <Compile Include="Assets\Scripts\HealthUnit.cs" />
     <Compile Include="Assets\Scripts\Bomb.cs" />
     <Compile Include="Assets\Scripts\StaticScripts\Keys\Key.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\MainMenu\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Hatch.cs" />
+    <Compile Include="Assets\Scripts\Spikes.cs" />
     <Compile Include="Assets\Scripts\ExitDoor.cs" />
     <Compile Include="Assets\Scripts\CameraFollowPlayer.cs" />
     <Compile Include="Assets\Scripts\CreateSaveDir.cs" />
@@ -102,7 +104,6 @@
     <Compile Include="Assets\Scripts\TransitionBlock.cs" />
     <Compile Include="Assets\Scripts\AudioLooper.cs" />
     <Compile Include="Assets\Scripts\ShotgunTopDown.cs" />
-    <Compile Include="Assets\Scripts\Spikes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

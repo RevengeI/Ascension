@@ -17158,6 +17158,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 565880375709516881, guid: eeaf9dc7182bb8c41b2ef17166cd9139, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 565880375872649622, guid: eeaf9dc7182bb8c41b2ef17166cd9139, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 565880376141556940, guid: eeaf9dc7182bb8c41b2ef17166cd9139, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -17205,6 +17213,18 @@ PrefabInstance:
     - target: {fileID: 565880376141556944, guid: eeaf9dc7182bb8c41b2ef17166cd9139, type: 3}
       propertyPath: m_Name
       value: Battery_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 565880376608115005, guid: eeaf9dc7182bb8c41b2ef17166cd9139, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 565880377091960594, guid: eeaf9dc7182bb8c41b2ef17166cd9139, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096633677962652215, guid: eeaf9dc7182bb8c41b2ef17166cd9139, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

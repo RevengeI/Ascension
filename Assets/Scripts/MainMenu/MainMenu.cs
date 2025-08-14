@@ -90,6 +90,7 @@ public class MainMenu : MonoBehaviour
         SceneParameters.door1 = loader.door1;
         SceneParameters.battery2 = loader.battery2;
         SceneParameters.battery1 = loader.battery1;
+        SceneParameters.battery3 = loader.battery3;
     }
 
     void MoveBG(int selector)

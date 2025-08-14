@@ -18,4 +18,5 @@ public static class SceneParameters
 
     public static bool battery1 = true;
     public static bool battery2 = true;
+    public static bool battery3 = true;
 }
